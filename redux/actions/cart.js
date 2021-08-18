@@ -1,0 +1,21 @@
+import { types } from "../types";
+
+export const getProductsCart = (cart) => ({
+  type: types.addProductCart,
+  payload: cart,
+});
+
+export const addPlateStorage = (cart) => ({
+  type: types.addProductCart,
+  payload: cart,
+});
+
+export const updatePlateStorage = (cart) => ({
+  type: types.addProductCart,
+  payload: cart,
+});
+
+export const removePlateStorage = (cart) => ({
+  type: types.addProductCart,
+  payload: cart,
+});
