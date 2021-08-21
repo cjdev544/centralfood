@@ -1,9 +1,7 @@
 import { useFormik } from "formik";
 import { Form, Button } from "semantic-ui-react";
-import { toast } from "react-toastify";
 import * as Yup from "yup";
 import { v4 as uuidv4 } from "uuid";
-import { loginApi, registerApi } from "../../../redux/actions/auth";
 import { useUi } from "../../../hooks/useUi";
 import { useAuth } from "../../../hooks/useAuth";
 
@@ -31,7 +29,7 @@ const RegisterForm = ({ setShowLogin, setShowModal }) => {
 
     onSubmit: async (formData) => {
       setIsLoading(true);
-      registerUser(formData);
+      registerUser(formData, setShowModal);
     },
   });
 

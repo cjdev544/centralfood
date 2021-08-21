@@ -1,19 +1,21 @@
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { Container, Icon, Label, Menu } from "semantic-ui-react";
 import BasicModal from "../../modals/BasicModal";
 import Auth from "../../Auth";
-import { useUi } from "../../../hooks/useUi";
 import { useAuth } from "../../../hooks/useAuth";
 
 const MenuBar = () => {
   const [titleModal, setTitleModal] = useState("Iniciar sesión");
-
-  const { setShowModal } = useUi();
+  const [showModal, setShowModal] = useState(false);
 
   const { auth, logoutAuth } = useAuth();
 
+  const router = useRouter();
+
   const handleLogout = () => {
+    router.replace("/");
     logoutAuth();
   };
 
@@ -78,8 +80,12 @@ const MenuBar = () => {
           </>
         )}
       </Container>
-      <BasicModal title={titleModal}>
-        <Auth setTitleModal={setTitleModal} />
+      <BasicModal
+        title={titleModal}
+        showModal={showModal}
+        setShowModal={setShowModal}
+      >
+        <Auth setTitleModal={setTitleModal} setShowModal={setShowModal} />
       </BasicModal>
     </div>
   );

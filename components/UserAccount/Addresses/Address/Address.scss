@@ -1,0 +1,26 @@
+.address {
+  border: 1px solid $border-grey-light;
+  border-radius: 5px;
+  margin: 10px 0;
+  padding: 10px;
+
+  p {
+    margin-bottom: 5px;
+
+    &:first-of-type {
+      border-bottom: 1px solid $border-grey-light;
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+  }
+
+  .actions {
+    margin-top: 20px;
+
+    .ui.button.primary {
+      background-color: $primary;
+      color: $font-light;
+    }
+  }
+}

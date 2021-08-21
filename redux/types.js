@@ -3,10 +3,11 @@ export const types = {
   login: "[Auth] Login",
   logout: "[Auth] Logout",
   setUser: "[Auth] SetUser",
-  userDirection: "[Auth] UserDirection",
-  directions: "[Auth] Directions",
-  deleteDirection: "[Auth] DeleteDirection",
-  updateDirection: "[Auth] UpdateDirection",
+  updateUser: "[Auth] UpdateUser",
+  getAddress: "[Auth] GetAddress",
+  createAddress: "[Auth] CreateAdrress",
+  deleteAddress: "[Auth] DeleteAddress",
+  updateAddress: "[Auth] UpdateAddress",
 
   // UI
   uiShowModal: "[UI] ShowModal",

@@ -1,8 +1,6 @@
 import { Modal, Icon } from "semantic-ui-react";
-import { useUi } from "../../../hooks/useUi";
 
-const BasicModal = ({ title, children, ...rest }) => {
-  const { showModal, setShowModal } = useUi();
+const BasicModal = ({ title, showModal, setShowModal, children, ...rest }) => {
   const onClose = () => setShowModal(false);
 
   return (

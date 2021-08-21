@@ -1,35 +1,27 @@
-import jwtDecode from "jwt-decode";
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BASE_PATH } from "../helpers/constats";
-import { getToken, removeToken } from "../helpers/token";
+import { removeToken } from "../helpers/token";
 import {
-  authUser,
   loginApi,
   logoutUser,
   registerApi,
-  getUser,
+  startUpdateUser,
+  setUser,
+  registerAddress,
+  removeAddress,
+  stratUpdateAddresss,
 } from "../redux/actions/auth";
 
 export const useAuth = () => {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
 
-  useEffect(() => {
-    const token = getToken();
-    if (token) {
-      const jwtDeco = jwtDecode(token);
-      dispatch(authUser({ uid: jwtDeco.id, jwt: token }));
-      dispatch(getUser(logoutAuth));
-    }
-  }, []);
-  console.log("render");
-  const loginUser = (identifier, password) => {
-    dispatch(loginApi(identifier, password));
+  const loginUser = (identifier, password, setShowModal) => {
+    dispatch(loginApi(identifier, password, setShowModal));
   };
 
-  const registerUser = (formData) => {
-    dispatch(registerApi(formData));
+  const registerUser = (formData, setShowModal) => {
+    dispatch(registerApi(formData, setShowModal));
   };
 
   const resetEmailApi = async (email) => {
@@ -55,6 +47,23 @@ export const useAuth = () => {
   const logoutAuth = () => {
     removeToken();
     dispatch(logoutUser());
+    dispatch(setUser(null));
+  };
+
+  const updateUser = (data) => {
+    dispatch(startUpdateUser(auth.user.id, data));
+  };
+
+  const createAddress = (formData, setShowModal) => {
+    dispatch(registerAddress(formData, setShowModal));
+  };
+
+  const deleteAddress = (addressId) => {
+    dispatch(removeAddress(addressId));
+  };
+
+  const updateAddress = (address, setShowModal) => {
+    dispatch(stratUpdateAddresss(address, setShowModal));
   };
 
   return {
@@ -63,5 +72,9 @@ export const useAuth = () => {
     registerUser,
     resetEmailApi,
     logoutAuth,
+    updateUser,
+    createAddress,
+    deleteAddress,
+    updateAddress,
   };
 };

@@ -5,7 +5,7 @@ import { useAuth } from "../../../hooks/useAuth";
 import { useUi } from "../../../hooks/useUi";
 // import { forgotPassword, loginUser } from "../../../api/user";
 
-const LoginForm = ({ setShowLogin }) => {
+const LoginForm = ({ setShowLogin, setShowModal }) => {
   const { loginUser, resetEmailApi } = useAuth();
 
   const { isLoading, setIsLoading } = useUi();
@@ -22,7 +22,7 @@ const LoginForm = ({ setShowLogin }) => {
 
     onSubmit: async (formData) => {
       setIsLoading(true);
-      loginUser(formData.identifier, formData.password);
+      loginUser(formData.identifier, formData.password, setShowModal);
     },
   });
 
