@@ -14,6 +14,7 @@ export const types = {
   uiIsLoading: "[UI] IsLoading",
 
   // Data
+  getPromotionPlates: "[Data] GetPromotionPlates",
   getRestaurants: "[Data] getRestaurants",
   getPlates: "[Data] getPlates",
   getHomePage: "[Data] getHomePage",

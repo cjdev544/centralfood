@@ -1,115 +1,29 @@
-import { db } from "../../firebase/firebase-config";
+import { concatArray } from "../../helpers/concatArray";
+import { BASE_PATH } from "../../helpers/constats";
 import { types } from "../types";
 
-export const startGetRestaurants = () => {
-  return (dispatch) => {
-    const newArray = [];
-    db.collection("restaurants")
-      .get()
-      .then((response) => {
-        response?.docs?.map((rest) => {
-          newArray.push({
-            index: rest.data().index,
-            key: rest.id,
-            value: rest.id,
-            text: rest.data().name,
-            options: rest.data().options,
-          });
-        });
-        // Order array for index in object
-        newArray.sort((a, b) => a.index - b.index);
-        dispatch(getRestaurants(newArray));
-      })
-      .catch((err) => console.error(err));
+export const startGetData = () => {
+  return async (dispatch) => {
+    try {
+      const url = `${BASE_PATH}/pagina-promocions`;
+      const response = await fetch(url);
+      const result = await response.json();
+      const res = result[0];
+      const promotionPlates = concatArray(res);
+      const promoSection = {
+        promoTitle: res.titulo_promocion,
+        description: res.descripcion_promocion,
+        plates: promotionPlates,
+      };
+      dispatch(getPromotionPlates(promoSection));
+    } catch (err) {
+      console.log(err);
+      return null;
+    }
   };
 };
 
-export const getRestaurantsClient = () => {
-  const newArray = [];
-  return (dispatch) =>
-    db
-      .collection("restaurants")
-      .get()
-      .then((response) => {
-        response.docs.map((doc) => {
-          newArray.push({
-            ...doc.data(),
-            id: doc.id,
-          });
-        });
-        dispatch(getRestaurants(newArray));
-      });
-};
-
-export const getRestaurants = (rest) => ({
-  type: types.getRestaurants,
-  payload: rest,
-});
-
-export const startGetPlates = () => {
-  return (dispatch) => {
-    const newArray = [];
-    db.collection("plates")
-      .get()
-      .then((plates) => {
-        plates?.docs?.map((response) => {
-          newArray.push({
-            ...response.data(),
-            id: response.id,
-          });
-        });
-        dispatch(getPlates(newArray));
-      });
-  };
-};
-
-export const getPlatesClient = () => {
-  const newArray = [];
-  return (dispatch) =>
-    db
-      .collection("plates")
-      .get()
-      .then((response) => {
-        response.docs.map((doc) => {
-          newArray.push({
-            ...doc.data(),
-            id: doc.id,
-          });
-        });
-        dispatch(getPlates(newArray));
-      });
-};
-
-export const getPlates = (plates) => ({
-  type: types.getPlates,
-  payload: plates,
-});
-
-export const startGetHomePage = () => {
-  return (dispatch) => {
-    db.collection("homePage")
-      .get()
-      .then((response) => {
-        const data = {
-          ...response.docs[0].data(),
-          id: response.docs[0].id,
-        };
-        dispatch(getHomePage(data));
-      });
-  };
-};
-
-export const getHomePage = (data) => ({
-  type: types.getHomePage,
+const getPromotionPlates = (data) => ({
+  type: types.getPromotionPlates,
   payload: data,
-});
-
-export const addPlate = (plate) => ({
-  type: types.addPlate,
-  payload: plate,
-});
-
-export const updatePlate = (plate) => ({
-  type: types.updatePlate,
-  payload: plate,
 });

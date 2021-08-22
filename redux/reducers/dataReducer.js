@@ -8,6 +8,12 @@ const initialState = {
 
 export const dataReducer = (state = initialState, action) => {
   switch (action.type) {
+    case types.getPromotionPlates:
+      return {
+        ...state,
+        promotionPlates: action.payload,
+      };
+
     case types.getRestaurants:
       return {
         ...state,

@@ -1,10 +1,12 @@
 import Head from "next/head";
+import { useData } from "../hooks/useData";
 import BasicLayout from "../layouts/BasicLayout";
 // import SectionPlates from "../components/SectionPlates";
 // import { useHomeClient } from "../hooks/useHomeClient";
 
 export default function Home() {
   // const { title1, title2, promoPlates, popuPlates } = useHomeClient();
+  useData();
 
   return (
     <BasicLayout>
