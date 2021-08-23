@@ -10,11 +10,11 @@ export const types = {
   updateAddress: "[Auth] UpdateAddress",
 
   // UI
-  uiShowModal: "[UI] ShowModal",
   uiIsLoading: "[UI] IsLoading",
 
   // Data
   getPromotionPlates: "[Data] GetPromotionPlates",
+  getPopularPlates: "[Data] GetPopularPlates",
   getRestaurants: "[Data] getRestaurants",
   getPlates: "[Data] getPlates",
   getHomePage: "[Data] getHomePage",

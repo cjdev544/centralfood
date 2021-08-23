@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import UserAccount from "../components/UserAccount";
-// import UserAccount from "../components/UserAccount/UserAccount";
 import { useAuth } from "../hooks/useAuth";
 import BasicLayout from "../layouts/BasicLayout";
 
@@ -13,7 +12,7 @@ const Account = () => {
   const { auth } = useAuth();
 
   useEffect(() => {
-    setUser(auth.user);
+    setUser(auth?.user);
   }, [auth]);
 
   if (user === undefined) {

@@ -1,0 +1,41 @@
+.section-plates {
+  &__plates {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+
+    @media screen and (max-width: $mobile) {
+      justify-content: center;
+    }
+
+    .plate-box {
+      margin-right: 20px;
+      margin-top: 20px;
+
+      @media screen and (max-width: $mobile) {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &__more-plates {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    @media screen and (max-width: $mobile) {
+      justify-content: center;
+    }
+
+    .plate-box {
+      margin-top: 20px;
+
+      @media screen and (max-width: $mobile) {
+        margin-right: 0;
+      }
+    }
+  }
+}

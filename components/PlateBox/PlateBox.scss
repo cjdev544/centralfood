@@ -1,0 +1,99 @@
+.plate-box {
+  background-color: $background-light;
+  border-radius: 10px;
+  border: 1px solid $border-grey-light;
+  box-shadow: 0 0 10px $border-grey-light;
+  width: 240px;
+
+  &:hover {
+    .plate-text {
+      &__info {
+        h2 {
+          &::after {
+            width: 100px;
+          }
+        }
+      }
+    }
+  }
+
+  img {
+    border-radius: 10px 10px 0 0;
+    height: 160px;
+    width: 240px;
+  }
+
+  .plate-text {
+    color: $font-dark;
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+    justify-content: space-between;
+    padding: 16px;
+
+    &__info {
+      h2 {
+        font-size: 16px;
+        position: relative;
+
+        &::after {
+          background-color: $primary;
+          content: "";
+          height: 4px;
+          left: 0;
+          position: absolute;
+          top: 18px;
+          transition: all 0.5s ease-in-out;
+          width: 50px;
+        }
+      }
+
+      p {
+        color: $font-grey;
+      }
+    }
+
+    .plate-footer {
+      &__alergic {
+        color: $font-grey;
+        font-size: 10px;
+
+        i {
+          color: $font-grey;
+          font-size: 10px !important;
+        }
+      }
+
+      &__white {
+        p {
+          color: $font-light;
+          font-size: 10px;
+        }
+
+        i {
+          color: $font-light;
+          font-size: 10px !important;
+        }
+      }
+
+      &__price {
+        align-items: center;
+        align-self: flex-end;
+        display: flex;
+        justify-content: space-between;
+        padding: 0;
+
+        p {
+          font-size: 20px;
+          font-weight: bold;
+          margin: 0;
+        }
+
+        i {
+          color: $primary;
+          font-size: 24px !important;
+        }
+      }
+    }
+  }
+}

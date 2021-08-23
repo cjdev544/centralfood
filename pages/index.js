@@ -1,4 +1,6 @@
 import Head from "next/head";
+import PopularePlates from "../components/PopularPlates";
+import PromotionPlates from "../components/PromotionPlates";
 import { useData } from "../hooks/useData";
 import BasicLayout from "../layouts/BasicLayout";
 // import SectionPlates from "../components/SectionPlates";
@@ -6,7 +8,7 @@ import BasicLayout from "../layouts/BasicLayout";
 
 export default function Home() {
   // const { title1, title2, promoPlates, popuPlates } = useHomeClient();
-  useData();
+  const { data } = useData();
 
   return (
     <BasicLayout>
@@ -17,13 +19,8 @@ export default function Home() {
       </Head>
 
       <main>
-        {/* {title1 && promoPlates?.length !== 0 && (
-          <SectionPlates title={title1} plates={promoPlates} />
-        )}
-        {title2 && popuPlates?.length !== 0 && (
-          <SectionPlates title={title2} plates={popuPlates} />
-        )} */}
-        aqui todo el index
+        {data?.promotionPlates && <PromotionPlates data={data} />}
+        {data?.popularPlates && <PopularePlates data={data} />}
       </main>
     </BasicLayout>
   );

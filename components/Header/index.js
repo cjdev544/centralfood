@@ -1,6 +1,6 @@
 // import { useRouter } from "next/router";
 import MenuBar from "./MenuBar";
-// import MenuRestaurants from "./MenuRestaurants";
+import MenuRestaurants from "./MenuRestaurants";
 // import OptionsMenu from "./OptionsMenu";
 import TopBar from "./TopBar";
 
@@ -11,7 +11,7 @@ const Header = () => {
     <div className="header">
       <TopBar />
       <MenuBar />
-      {/* <MenuRestaurants /> */}
+      <MenuRestaurants />
       {/* {route !== "/" && <OptionsMenu />} */}
     </div>
   );

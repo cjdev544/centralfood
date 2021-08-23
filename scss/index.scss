@@ -6,17 +6,15 @@
 
 // Layout
 @import "../layouts/BasicLayout/BasicLayout.scss";
-// @import "../layouts/AdminLayout/AdminLayout.scss";
 
 // Components
 @import "../components/Header/Header.scss";
 @import "../components/Header/TopBar/TopBar.scss";
 @import "../components/Header/MenuBar/MenuBar.scss";
 @import "../components/Modals/BasicModal/BasicModal.scss";
-// @import "../components/Header/MenuRestaurants/MenuRestaurants.scss";
+@import "../components/Header/MenuRestaurants/MenuRestaurants.scss";
 // @import "../components/Header/OptionsMenu/OptionsMenu.scss";
 // @import "../components/SectionPlates/SectionPlates.scss";
-// @import "../components/PlateBox/PlateBox.scss";
 @import "../components/Auth/Auth.scss";
 @import "../components/UserAccount/UserAcount.scss";
 @import "../components/UserAccount/Addresses/Addresses.scss";
@@ -27,6 +25,10 @@
 // @import "../components/PageNoExist/PageNoExist.scss";
 @import "../components/UserAccount/ChangeNameForm/ChangeNameForm.scss";
 @import "../components/UserAccount/ChangeEmailForm/ChangeEmailForm.scss";
+@import "../components/PromotionPlates/PromotionPlates.scss";
+@import "../components/PopularPlates/PopularPlates.scss";
+@import "../components/SectionPlates/SectionPlates.scss";
+@import "../components/PlateBox/PlateBox.scss";
 // @import "../components/UserAccount/ChangePasswordForm/ChangePasswordForm.scss";
 // @import "../components/UserAccount/AddressForm/AddressForm.scss";
 // @import "../components/Search/Search.scss";

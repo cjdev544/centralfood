@@ -1,6 +1,6 @@
 import jwtDecode from "jwt-decode";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getToken, removeToken } from "../helpers/token";
 import {
   authUser,
@@ -12,6 +12,7 @@ import {
 
 export const useDataUser = () => {
   const dispatch = useDispatch();
+  const auth = useSelector((state) => state.auth);
 
   const logoutAuth = () => {
     removeToken();
@@ -20,18 +21,22 @@ export const useDataUser = () => {
   };
 
   useEffect(() => {
-    const token = getToken();
-    if (token) {
-      const jwtDeco = jwtDecode(token);
-      dispatch(authUser({ uid: jwtDeco.id, jwt: token }));
-      dispatch(getUser(logoutAuth));
+    if (!auth?.user) {
+      const token = getToken();
+      if (token) {
+        const jwtDeco = jwtDecode(token);
+        dispatch(authUser({ uid: jwtDeco.id, jwt: token }));
+        dispatch(getUser(logoutAuth));
+      }
     }
   }, []);
 
   useEffect(() => {
-    const token = getToken();
-    if (token) {
-      dispatch(getApiAddress());
+    if (!auth?.addresses) {
+      const token = getToken();
+      if (token) {
+        dispatch(getApiAddress());
+      }
     }
   }, []);
 };

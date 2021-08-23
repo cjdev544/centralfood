@@ -15,8 +15,8 @@ const MenuBar = () => {
   const router = useRouter();
 
   const handleLogout = () => {
-    router.replace("/");
     logoutAuth();
+    router.replace("/");
   };
 
   return (
