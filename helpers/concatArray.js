@@ -1,9 +1,9 @@
 export const concatArray = (res) => {
-  const sushiGuay = res?.sushiwuay_platoes;
-  const guayWok = res?.guaywok_platoes;
-  const saborCasita = res?.saborcasita_platoes;
-  const tapas = res?.tapas;
-  const bebidas = res?.bebidas;
+  const sushiGuay = res?.sushiguay_platoes || [];
+  const guayWok = res?.guaywok_platoes || [];
+  const saborCasita = res?.sabor_casita_platoes || [];
+  const tapas = res?.tapas_platoes || [];
+  const bebidas = res?.bebidas_platoes || [];
 
   return sushiGuay
     .concat(guayWok)

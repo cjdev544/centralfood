@@ -1,5 +1,15 @@
 .menu-restaurants {
   background-color: $background-grey;
+  position: sticky;
+  padding-bottom: 5px;
+  top: 47px;
+  z-index: 2;
+
+  &.shadow {
+    box-shadow: 0 -10px 10px 15px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0 -10px 10px 15px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 -10px 10px 15px rgba(0, 0, 0, 0.5);
+  }
 
   &__container {
     align-items: center;

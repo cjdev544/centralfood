@@ -1,6 +1,11 @@
 import { types } from "../types";
 
-const initialState = null;
+const initialState = {
+  promotionPlates: null,
+  popularPlates: null,
+  restaurants: [],
+  plates: [],
+};
 
 export const dataReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -25,7 +30,12 @@ export const dataReducer = (state = initialState, action) => {
     case types.getPlates:
       return {
         ...state,
-        plates: action.payload,
+        plates: [
+          ...state.plates.filter(
+            (plate) => plate.restaurant !== action.payload.restaurant
+          ),
+          action.payload,
+        ],
       };
 
     case types.getHomePage:

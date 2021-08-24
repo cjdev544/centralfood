@@ -1,0 +1,31 @@
+.options-menu {
+  background-color: $background-grey;
+  box-shadow: 0 -10px 10px 15px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 -10px 10px 15px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 -10px 10px 15px rgba(0, 0, 0, 0.5);
+  padding-bottom: 4px;
+  position: sticky;
+  top: 138px;
+  z-index: 1;
+
+  &__container.ui.container {
+    display: flex;
+    justify-content: space-between;
+
+    a {
+      font-weight: bold;
+      color: $font-dark;
+    }
+  }
+
+  &__button {
+    cursor: pointer;
+
+    a.active {
+      background-color: $primary;
+      color: $font-light;
+      padding: 5px 10px;
+      border-radius: 20px 20px 0 0;
+    }
+  }
+}

@@ -1,0 +1,20 @@
+.rest-page {
+  &__title {
+    color: $primary;
+    text-align: center;
+  }
+
+  &__option-title {
+    position: relative;
+
+    &::after {
+      background-color: $primary;
+      content: "";
+      height: 3px;
+      left: 0;
+      position: absolute;
+      top: 25px;
+      width: 60px;
+    }
+  }
+}

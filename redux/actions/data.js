@@ -22,6 +22,11 @@ export const startGetPromotionPlates = () => {
   };
 };
 
+const getPromotionPlates = (data) => ({
+  type: types.getPromotionPlates,
+  payload: data,
+});
+
 export const startGetPopularPlates = () => {
   return async (dispatch) => {
     try {
@@ -42,6 +47,11 @@ export const startGetPopularPlates = () => {
   };
 };
 
+const getPopularPlates = (data) => ({
+  type: types.getPopularPlates,
+  payload: data,
+});
+
 export const startGetRestaurants = () => {
   return async (dispatch) => {
     try {
@@ -56,17 +66,49 @@ export const startGetRestaurants = () => {
   };
 };
 
-const getPromotionPlates = (data) => ({
-  type: types.getPromotionPlates,
-  payload: data,
-});
-
-const getPopularPlates = (data) => ({
-  type: types.getPopularPlates,
-  payload: data,
-});
-
 const getRestaurants = (restaurants) => ({
   type: types.getRestaurants,
   payload: restaurants,
+});
+
+export const startGetRestaurantPlate = (restaurant) => {
+  return async (dispatch) => {
+    try {
+      const url = `${BASE_PATH}/${restaurant}-platoes`;
+      const response = await fetch(url);
+      const result = await response.json();
+      dispatch(startGetCategoriesRestaurant(restaurant, result));
+    } catch (err) {
+      console.log(err);
+      return null;
+    }
+  };
+};
+
+export const startGetCategoriesRestaurant = (restaurant, plates) => {
+  return async (dispatch) => {
+    try {
+      const url = `${BASE_PATH}/category-${restaurant}s`;
+      const response = await fetch(url);
+      const result = await response.json();
+      const restaurants = result?.map((option) => {
+        const platesForCategory = plates?.filter(
+          (plate) => plate.categoria.category === option.category
+        );
+        return {
+          category: option.category,
+          plates: platesForCategory,
+        };
+      });
+      dispatch(GetplatesForRestaurants({ restaurant, plates: restaurants }));
+    } catch (err) {
+      console.log(err);
+      return null;
+    }
+  };
+};
+
+const GetplatesForRestaurants = (plates) => ({
+  type: types.getPlates,
+  payload: plates,
 });
