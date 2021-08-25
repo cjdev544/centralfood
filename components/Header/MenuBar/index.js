@@ -1,18 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Container, Icon, Label, Menu } from "semantic-ui-react";
 import BasicModal from "../../modals/BasicModal";
 import Auth from "../../Auth";
 import { useAuth } from "../../../hooks/useAuth";
+import { useCart } from "../../../hooks/useCart";
 
 const MenuBar = () => {
   const [titleModal, setTitleModal] = useState("Iniciar sesión");
   const [showModal, setShowModal] = useState(false);
 
   const { auth, logoutAuth } = useAuth();
-
   const router = useRouter();
+  const { productsInCart } = useCart();
+
+  const [numberCart, setNumberCart] = useState(productsInCart);
+
+  useEffect(() => {
+    setNumberCart(productsInCart);
+  }, [productsInCart]);
 
   const handleLogout = () => {
     logoutAuth();
@@ -45,9 +52,9 @@ const MenuBar = () => {
                 <Menu.Item className="icon_pointer">
                   <Icon name="cart" />
                   Carrito
-                  {0 > 0 && (
+                  {numberCart > 0 && (
                     <Label color="red" floating circular>
-                      {0}
+                      {productsInCart}
                     </Label>
                   )}
                 </Menu.Item>
@@ -69,9 +76,9 @@ const MenuBar = () => {
                 <Menu.Item className="icon_pointer">
                   <Icon name="cart" />
                   Carrito
-                  {0 > 0 && (
+                  {numberCart > 0 && (
                     <Label color="red" floating circular>
-                      {0}
+                      {productsInCart}
                     </Label>
                   )}
                 </Menu.Item>

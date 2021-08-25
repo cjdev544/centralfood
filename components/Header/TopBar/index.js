@@ -1,10 +1,24 @@
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { Container, Input, Grid } from "semantic-ui-react";
 import CentralFoodLogo from "../../../public/central-food.png";
 import "react-toastify/dist/ReactToastify.css";
 
 const TopBar = () => {
+  const [searchStr, setSearchStr] = useState("");
+  const [load, setLoad] = useState(false);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (load) {
+      router.push(`/busqueda?query=${searchStr}`);
+    }
+    setLoad(true);
+  }, [searchStr]);
+
   return (
     <div className="top-bar">
       <Container>
@@ -29,7 +43,12 @@ const TopBar = () => {
             </Link>
           </div>
           <div className="top-bar__right">
-            <Input id="search" icon={{ name: "search" }} />
+            <Input
+              id="search"
+              icon={{ name: "search" }}
+              value={searchStr}
+              onChange={(_, data) => setSearchStr(data.value)}
+            />
           </div>
         </Grid>
       </Container>

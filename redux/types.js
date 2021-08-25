@@ -17,9 +17,7 @@ export const types = {
   getPopularPlates: "[Data] GetPopularPlates",
   getRestaurants: "[Data] getRestaurants",
   getPlates: "[Data] getPlates",
-  getHomePage: "[Data] getHomePage",
-  addPlate: "[Data] addPlate",
-  updatePlate: "[Data] updatePlate",
+  getAllPlates: "[Data] getAllPlates",
 
   // Cart
   getProductsCart: "[Cart] GetProductsCart",

@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import UserAccount from "../components/UserAccount";
 import { useAuth } from "../hooks/useAuth";
-import BasicLayout from "../layouts/BasicLayout";
 
 const Account = () => {
   const [user, setUser] = useState(null);
@@ -21,9 +20,7 @@ const Account = () => {
     return null;
   }
 
-  return (
-    <BasicLayout>{!user ? <p>Cargando...</p> : <UserAccount />}</BasicLayout>
-  );
+  return <>{!user ? <p>Cargando...</p> : <UserAccount />}</>;
 };
 
 export default Account;

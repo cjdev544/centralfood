@@ -1,0 +1,97 @@
+.plate {
+  &.ui.grid {
+    margin: 0;
+  }
+
+  &__category {
+    background-color: $background-light;
+
+    p {
+      font-weight: bold;
+      margin: 0;
+      padding: 5px 0;
+      text-align: center;
+
+      span {
+        color: $primary;
+      }
+    }
+  }
+
+  &__title {
+    background-color: $background-dark-absolute;
+    color: $font-light;
+    font-weight: bold;
+    padding: 10px 0;
+    position: relative;
+    text-align: center;
+  }
+
+  &__rest {
+    font-size: 15px;
+    font-weight: bold;
+    padding: 10px 0;
+    text-align: center;
+
+    span {
+      color: $primary;
+      font-size: 18px;
+      margin-left: 5px;
+    }
+  }
+
+  &__description {
+    background-color: $background-light;
+    font-size: 16px;
+    padding: 20px;
+  }
+
+  &__buy {
+    align-items: center;
+    background-color: $background-dark-absolute;
+    color: $font-light;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 20px;
+
+    &-price {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 0;
+
+      span {
+        color: $primary;
+        font-size: 25px;
+        margin-left: 5px;
+      }
+    }
+
+    &-btn.ui.button {
+      background-color: $primary !important;
+      color: $font-light !important;
+      font-size: 18px;
+      left: -10px;
+      padding: 10px 0;
+      position: relative;
+      transition: 0.2s;
+      width: 200px;
+
+      &:hover {
+        left: 0;
+      }
+    }
+  }
+
+  &__plus-minus {
+    color: $primary;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 20px 0;
+
+    span {
+      color: $font-dark;
+      font-size: 25px;
+      margin: 0 20px;
+    }
+  }
+}

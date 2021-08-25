@@ -1,5 +1,5 @@
 import { concatArray } from "../../helpers/concatArray";
-import { BASE_PATH } from "../../helpers/constats";
+import { BASE_PATH } from "../../helpers/constants";
 import { types } from "../types";
 
 export const startGetPromotionPlates = () => {
@@ -59,6 +59,7 @@ export const startGetRestaurants = () => {
       const response = await fetch(url);
       const result = await response.json();
       dispatch(getRestaurants(result));
+      dispatch(startGetAllPlates(result));
     } catch (err) {
       console.log(err);
       return null;
@@ -110,5 +111,34 @@ export const startGetCategoriesRestaurant = (restaurant, plates) => {
 
 const GetplatesForRestaurants = (plates) => ({
   type: types.getPlates,
+  payload: plates,
+});
+
+export const startGetAllPlates = (restaurants) => {
+  return async (dispatch) => {
+    try {
+      const array = [];
+      const allPlates = [];
+      for await (const rest of restaurants) {
+        const url = `${BASE_PATH}/${rest.page}-platoes`;
+        const response = await fetch(url);
+        const result = await response.json();
+        array.push(result);
+      }
+      array?.forEach((plateRest) => {
+        plateRest.forEach((plate) => {
+          allPlates.push(plate);
+        });
+      });
+      dispatch(getAllPlates(allPlates));
+    } catch (err) {
+      console.log(err);
+      return null;
+    }
+  };
+};
+
+const getAllPlates = (plates) => ({
+  type: types.getAllPlates,
   payload: plates,
 });

@@ -5,7 +5,7 @@ export const getProductsCart = (cart) => ({
   payload: cart,
 });
 
-export const addPlateStorage = (cart) => ({
+export const addPlateCart = (cart) => ({
   type: types.addProductCart,
   payload: cart,
 });

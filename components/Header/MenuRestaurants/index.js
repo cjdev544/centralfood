@@ -3,13 +3,12 @@ import Link from "next/link";
 import { Container } from "semantic-ui-react";
 import { useData } from "../../../hooks/useData";
 
-const MenuRestaurants = ({ plates }) => {
+const MenuRestaurants = () => {
   const { data } = useData();
   const restaurants = data?.restaurants;
-  console.log(plates);
 
   return (
-    <div className={plates ? "menu-restaurants" : "menu-restaurants shadow"}>
+    <div className="menu-restaurants">
       <Container>
         <div className="menu-restaurants__container">
           {restaurants?.map((rest) => (

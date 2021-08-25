@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  startGetCategoriesRestaurant,
   startGetPopularPlates,
   startGetPromotionPlates,
   startGetRestaurantPlate,
@@ -13,10 +12,10 @@ export const useData = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!data?.promotionPlates) {
+    if (!data?.popularPlates) {
+      dispatch(startGetRestaurants());
       dispatch(startGetPromotionPlates());
       dispatch(startGetPopularPlates());
-      dispatch(startGetRestaurants());
     }
   }, []);
 

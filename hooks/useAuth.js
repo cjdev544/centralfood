@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { BASE_PATH } from "../helpers/constats";
+import { BASE_PATH } from "../helpers/constants";
 import { removeToken } from "../helpers/token";
 import {
   loginApi,

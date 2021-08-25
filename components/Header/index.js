@@ -18,9 +18,11 @@ const Header = () => {
       <div className="header">
         <TopBar />
       </div>
-      <MenuBar />
-      <MenuRestaurants plates={plates?.restaurant} />
-      {plates?.restaurant && <OptionsMenu plates={plates} />}
+      <div className="header__fix">
+        <MenuBar />
+        <MenuRestaurants />
+        {plates?.restaurant && <OptionsMenu plates={plates} />}
+      </div>
     </>
   );
 };

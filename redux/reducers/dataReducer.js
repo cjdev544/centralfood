@@ -5,6 +5,7 @@ const initialState = {
   popularPlates: null,
   restaurants: [],
   plates: [],
+  allPlates: null,
 };
 
 export const dataReducer = (state = initialState, action) => {
@@ -38,25 +39,10 @@ export const dataReducer = (state = initialState, action) => {
         ],
       };
 
-    case types.getHomePage:
+    case types.getAllPlates:
       return {
         ...state,
-        homePage: action.payload,
-      };
-
-    case types.addPlate:
-      return {
-        ...state,
-        plates: [...state.plates, action.payload],
-      };
-
-    case types.updatePlate:
-      return {
-        ...state,
-        plates: [
-          ...state.plates.filter((plate) => plate.id !== action.payload.id),
-          action.payload,
-        ],
+        allPlates: action.payload,
       };
 
     default:

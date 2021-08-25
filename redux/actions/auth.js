@@ -1,5 +1,5 @@
 import { types } from "../types";
-import { BASE_PATH } from "../../helpers/constats";
+import { BASE_PATH } from "../../helpers/constants";
 import { toast } from "react-toastify";
 import { uiIsLoading } from "./ui";
 import { setToken } from "../../helpers/token";
