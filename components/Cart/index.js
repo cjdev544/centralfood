@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useCart } from "../../hooks/useCart";
 import Payment from "./Payment/Payment";
 import ShippingAddress from "./ShippingAddress/ShippingAddress";
 import SummaryCart from "./SummaryCart";

@@ -1,16 +1,18 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Grid } from "semantic-ui-react";
+import { useAuth } from "../../../hooks/useAuth";
 import Address from "./Address/Address";
 
 const ShippingAddress = ({ setAddress }) => {
-  const { directions } = useSelector((state) => state.auth);
+  const { auth } = useAuth();
+  const addresses = auth?.addresses;
 
   const [addressActive, setAddressActive] = useState(null);
 
-  const size = directions?.length;
+  const size = addresses?.length;
 
-  if (!directions) return null;
+  if (!addresses) return null;
 
   return (
     <section className="shipping-address">
@@ -20,7 +22,7 @@ const ShippingAddress = ({ setAddress }) => {
           <h3>No hay direcciones creadas</h3>
         ) : (
           <Grid>
-            {directions?.map((address) => (
+            {addresses?.map((address) => (
               <Address
                 key={address.id}
                 address={address}

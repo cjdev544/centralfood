@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useDispatch } from "react-redux";
-import { Icon, Table, TableRow } from "semantic-ui-react";
+import { round } from "mathjs";
+import { Icon, Table } from "semantic-ui-react";
 import { useLocalStorage } from "../../../../hooks/useLocalStorage";
-import { useStorageImage } from "../../../../hooks/useStorageImage";
 import NoImage from "../../../../public/no-image.png";
 import {
   removePlateStorage,
@@ -14,13 +14,11 @@ const TableCellProduct = ({ product }) => {
   const dispatch = useDispatch();
   const { updateProductCart, deleteProductCart } = useLocalStorage();
 
-  const { imgUrl } = useStorageImage(product);
-
   const [counter, setCounter] = useState(product.number);
-  const [total, setTotal] = useState(product?.price);
+  const [total, setTotal] = useState(product?.precio);
 
   useEffect(() => {
-    setTotal(product?.price * counter);
+    setTotal(round(product?.precio * counter, 2));
   }, [counter]);
 
   useEffect(() => {
@@ -54,14 +52,14 @@ const TableCellProduct = ({ product }) => {
     <Table.Row className="summary-cart__product">
       <Table.Cell>
         <Image
-          src={imgUrl ? imgUrl : NoImage}
-          alt={product?.title}
+          src={product?.imagen?.url ? product.imagen.url : NoImage}
+          alt={product?.nombre}
           width={50}
           height={50}
         />
-        {product?.title}
+        {product?.nombre}
       </Table.Cell>
-      <Table.Cell>{`${product.price} €`}</Table.Cell>
+      <Table.Cell>{`${product?.precio} €`}</Table.Cell>
       <Table.Cell className="summary-cart__plus-minus">
         <Icon name="minus circle" link onClick={minusPlate} />
         <span>{counter}</span>
