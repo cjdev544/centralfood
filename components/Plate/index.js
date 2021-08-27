@@ -6,6 +6,7 @@ import { useData } from "../../hooks/useData";
 import { toast } from "react-toastify";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { useCart } from "../../hooks/useCart";
+import { round } from "mathjs";
 
 const Plate = ({ plate }) => {
   const [rest, setRest] = useState(null);
@@ -26,7 +27,7 @@ const Plate = ({ plate }) => {
   }, [plate, data?.restaurants]);
 
   useEffect(() => {
-    setTotal(plate?.precio * counter);
+    setTotal(round(plate?.precio * counter, 2));
   }, [counter]);
 
   const plusPlate = () => {

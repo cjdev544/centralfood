@@ -31,7 +31,7 @@ const MenuBar = () => {
       <Container className="menu-bar__items">
         {auth?.user ? (
           <>
-            <Link href="/orders">
+            <Link href="/pedidos">
               <a>
                 <Menu.Item>
                   <Icon name="shopping basket" />

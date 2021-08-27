@@ -39,6 +39,9 @@ export const cartReducer = (state = initialState, action) => {
         return initialState;
       }
 
+    case types.removeAllProductsCart:
+      return initialState;
+
     default:
       return state;
   }

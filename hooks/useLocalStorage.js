@@ -5,7 +5,7 @@ export const useLocalStorage = () => {
     plate.number = number;
     const cart = JSON.parse(localStorage.getItem(CART));
     if (cart) {
-      const newStorage = cart.filter(
+      const newStorage = cart?.filter(
         (plateStorage) => plateStorage.id !== plate.id
       );
       newStorage.push(plate);
@@ -21,7 +21,7 @@ export const useLocalStorage = () => {
   const updateProductCart = (product, number) => {
     product.number = number;
     const cart = JSON.parse(localStorage.getItem(CART));
-    const newStorage = cart.map((productCart) =>
+    const newStorage = cart?.map((productCart) =>
       productCart.id === product.id ? product : productCart
     );
     localStorage.setItem(CART, JSON.stringify(newStorage));
@@ -31,7 +31,7 @@ export const useLocalStorage = () => {
   const deleteProductCart = (product) => {
     const cart = JSON.parse(localStorage.getItem(CART));
 
-    const newStorage = cart.filter(
+    const newStorage = cart?.filter(
       (plateStorage) => plateStorage.id !== product.id
     );
     if (newStorage?.length > 0) {

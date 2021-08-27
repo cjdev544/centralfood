@@ -1,22 +1,7 @@
-import { useEffect, useState } from "react";
-import { round } from "mathjs";
 import { Table } from "semantic-ui-react";
 import TableCellProduct from "./ProductCart/TableCellProduct";
 
-const SummaryCart = ({ products }) => {
-  const [totalPriceToPay, setTotalPriceToPay] = useState(0);
-
-  useEffect(() => {
-    const totalForProduct = products.map((product) =>
-      round(product.precio * product.number, 2)
-    );
-    let totalForPay = 0;
-    totalForProduct.forEach((element) => {
-      totalForPay += element;
-    });
-    setTotalPriceToPay(totalForPay);
-  }, [products]);
-
+const SummaryCart = ({ products, totalPriceToPay }) => {
   return (
     <div className="summary-cart">
       <div className="title">Resumen del carrito</div>
