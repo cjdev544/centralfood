@@ -4,12 +4,14 @@ import { authReducer } from "./reducers/authReducer";
 import { uiReducer } from "./reducers/uiReducer";
 import { dataReducer } from "./reducers/dataReducer";
 import { cartReducer } from "./reducers/cartReducer";
+import { ordersReducer } from "./reducers/ordersReducer";
 
 const reducers = combineReducers({
   auth: authReducer,
   ui: uiReducer,
   data: dataReducer,
   cart: cartReducer,
+  order: ordersReducer,
 });
 
 const composeEnhancers =

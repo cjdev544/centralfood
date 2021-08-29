@@ -1,14 +1,12 @@
 .pedidos-page {
   padding: 10px;
-  &__block {
-    width: max-content;
-  }
 
   .title {
     background-color: $background-dark-absolute;
+    border-radius: 5px 5px 0 0;
     color: $font-light;
     padding: 5px 10px;
-    border-radius: 5px 5px 0 0;
+    width: max-content;
   }
 
   .data {
