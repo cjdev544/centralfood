@@ -1,12 +1,15 @@
 import { useAuth } from "../../hooks/useAuth";
 import { useOrder } from "../../hooks/useOrder";
+import DefaultLoader from "../DefaultLoader";
 import OrderList from "./OredrList";
 
 const PedidosPage = () => {
   const { orders, getOrders } = useOrder();
   const { auth } = useAuth();
 
-  getOrders(auth?.uid);
+  getOrders();
+
+  if (!orders) return <DefaultLoader />;
 
   return (
     <div className="pedidos-page">

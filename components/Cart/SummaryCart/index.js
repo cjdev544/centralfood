@@ -1,10 +1,18 @@
 import { Table } from "semantic-ui-react";
+import { useCart } from "../../../hooks/useCart";
 import TableCellProduct from "./ProductCart/TableCellProduct";
 
 const SummaryCart = ({ products, totalPriceToPay }) => {
+  const { removeAllProductsCart } = useCart();
+
   return (
     <div className="summary-cart">
-      <div className="title">Resumen del carrito</div>
+      <div className="title cart-title">
+        Direcciones
+        <div className="plus" onClick={() => removeAllProductsCart()}>
+          Vaciar carrito
+        </div>
+      </div>
       <div className="data">
         <Table celled structured>
           <Table.Header>

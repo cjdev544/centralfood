@@ -1,10 +1,13 @@
 import Head from "next/head";
+import DefaultLoader from "../components/DefaultLoader";
 import PopularePlates from "../components/PopularPlates";
 import PromotionPlates from "../components/PromotionPlates";
 import { useData } from "../hooks/useData";
 
 export default function Home() {
   const { data } = useData();
+
+  if (!data) return <DefaultLoader />;
 
   return (
     <>

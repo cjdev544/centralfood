@@ -1,3 +1,4 @@
+import DefaultLoader from "../DefaultLoader";
 import SectionPlates from "../SectionPlates";
 
 const RestPage = ({ plates, path }) => {
@@ -11,7 +12,7 @@ const RestPage = ({ plates, path }) => {
 
   const restaurant = pageRest[path];
 
-  if (!plates) return <p>Cargando...</p>;
+  if (!plates) return <DefaultLoader />;
 
   return (
     <div className="rest-page">

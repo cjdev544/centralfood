@@ -151,6 +151,7 @@ export const registerAddress = (data, setShowModal) => {
         body: JSON.stringify(data),
       };
       const address = await authFetch(url, params, () => null);
+      console.log(address);
       dispatch(setAddress(address));
       dispatch(uiIsLoading(false));
       setShowModal(false);

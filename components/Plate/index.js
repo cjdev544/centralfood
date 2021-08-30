@@ -7,12 +7,14 @@ import { toast } from "react-toastify";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { useCart } from "../../hooks/useCart";
 import { round } from "mathjs";
+import { useRouter } from "next/dist/client/router";
 
 const Plate = ({ plate }) => {
   const [rest, setRest] = useState(null);
   const [counter, setCounter] = useState(1);
   const [total, setTotal] = useState(plate?.precio);
 
+  const router = useRouter();
   const { addProductCart } = useLocalStorage();
   const { addPlateInCart } = useCart();
 
@@ -44,6 +46,7 @@ const Plate = ({ plate }) => {
     const cart = addProductCart(plate, counter);
     toast.success("Producto agregado al carrito");
     addPlateInCart(cart);
+    router.back();
   };
 
   if (!rest) return null;

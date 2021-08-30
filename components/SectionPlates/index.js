@@ -1,18 +1,15 @@
+import { Grid } from "semantic-ui-react";
 import PlateBox from "../PlateBox";
 
 const SectionPlates = ({ plates }) => {
   return (
-    <div
-      className={
-        plates?.length > 2
-          ? "section-plates__more-plates"
-          : "section-plates__plates"
-      }
-    >
-      {plates.map((plate) => (
-        <PlateBox key={plate.id} plate={plate} />
+    <Grid className="secction-plates">
+      {plates?.map((plate) => (
+        <Grid.Column key={plate.id} mobile={16} tablet={8} computer={4}>
+          <PlateBox plate={plate} />
+        </Grid.Column>
       ))}
-    </div>
+    </Grid>
   );
 };
 

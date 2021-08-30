@@ -39,4 +39,17 @@ export const useDataUser = () => {
       }
     }
   }, []);
+
+  const getDataUser = () => {
+    if (!auth?.addresses) {
+      const token = getToken();
+      if (token) {
+        dispatch(getApiAddress());
+      }
+    }
+  };
+
+  return {
+    getDataUser,
+  };
 };

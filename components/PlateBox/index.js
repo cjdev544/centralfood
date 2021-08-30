@@ -6,7 +6,7 @@ import NoImage from "../../public/no-image.png";
 const PlateBox = ({ plate }) => {
   const cutDescription = plate?.descripcion?.substring(0, 51);
 
-  if (!plate) return null;
+  if (!plate || !plate?.disponible) return null;
 
   return (
     <article className="plate-box">

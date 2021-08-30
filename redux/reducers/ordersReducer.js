@@ -1,7 +1,7 @@
 import { types } from "../types";
 
 const initialState = {
-  orders: [],
+  orders: null,
 };
 
 export const ordersReducer = (state = initialState, action) => {

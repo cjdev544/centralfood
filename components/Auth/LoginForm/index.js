@@ -3,11 +3,11 @@ import * as Yup from "yup";
 import { Button, Form } from "semantic-ui-react";
 import { useAuth } from "../../../hooks/useAuth";
 import { useUi } from "../../../hooks/useUi";
+import { useRouter } from "next/dist/client/router";
 // import { forgotPassword, loginUser } from "../../../api/user";
 
 const LoginForm = ({ setShowLogin, setShowModal }) => {
   const { loginUser, resetEmailApi } = useAuth();
-
   const { isLoading, setIsLoading } = useUi();
 
   const formik = useFormik({
