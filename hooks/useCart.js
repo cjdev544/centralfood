@@ -5,14 +5,14 @@ import { CART } from "../helpers/constants";
 import {
   addPlateCart,
   getProductsCart,
-  paymentOrder,
   removeCart,
 } from "../redux/actions/cart";
 
 export const useCart = () => {
   const dispatch = useDispatch();
-  const router = useRouter();
-  const { productsCart, productsInCart } = useSelector((state) => state.cart);
+  const { productsCart, productsInCart, dataPayment } = useSelector(
+    (state) => state.cart
+  );
 
   useEffect(() => {
     const cart = JSON.parse(localStorage.getItem(CART));
@@ -23,12 +23,6 @@ export const useCart = () => {
     dispatch(addPlateCart(cart));
   };
 
-  const paymentCartOrder = (token, products, idUser, address) => {
-    dispatch(paymentOrder(token, products, idUser, address));
-    removeAllProductsCart();
-    router.push("/pedidos");
-  };
-
   const removeAllProductsCart = () => {
     localStorage.removeItem(CART);
     dispatch(removeCart());
@@ -37,8 +31,8 @@ export const useCart = () => {
   return {
     productsCart,
     productsInCart,
+    dataPayment,
     addPlateInCart,
-    paymentCartOrder,
     removeAllProductsCart,
   };
 };

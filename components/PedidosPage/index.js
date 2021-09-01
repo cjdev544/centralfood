@@ -5,7 +5,6 @@ import OrderList from "./OredrList";
 
 const PedidosPage = () => {
   const { orders, getOrders } = useOrder();
-  const { auth } = useAuth();
 
   getOrders();
 

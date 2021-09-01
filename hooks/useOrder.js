@@ -5,14 +5,14 @@ import { startGetOrders } from "../redux/actions/order";
 export const useOrder = () => {
   const dispatch = useDispatch();
   const { orders } = useSelector((state) => state.order);
-  const { uid } = useSelector((state) => state.auth);
+  const auth = useSelector((state) => state.auth);
 
   useEffect(() => {
-    if (uid) getOrders(uid);
-  }, [uid]);
+    if (auth?.uid) getOrders(auth?.uid);
+  }, [auth?.uid]);
 
   const getOrders = () => {
-    if (orders?.length === 0 || !orders) dispatch(startGetOrders(uid));
+    if (orders?.length === 0 || !orders) dispatch(startGetOrders(auth?.uid));
   };
 
   return {

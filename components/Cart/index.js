@@ -29,7 +29,7 @@ const Cart = () => {
   }, [productsCart, auth]);
 
   useEffect(() => {
-    getDataUser();
+    if (!auth) getDataUser();
   }, [auth]);
 
   return (

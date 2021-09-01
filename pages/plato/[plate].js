@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import DefaultLoader from "../../components/DefaultLoader";
 import Plate from "../../components/Plate";
 import { useData } from "../../hooks/useData";
 
@@ -10,7 +11,7 @@ const PlatePage = () => {
     (plate) => plate.path === query.plate
   )[0];
 
-  if (!plate) return <p>Cargando...</p>;
+  if (!plate) return <DefaultLoader />;
 
   return <Plate plate={plate} />;
 };
