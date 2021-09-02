@@ -2,15 +2,21 @@ import jwtDecode from "jwt-decode";
 import { TOKEN } from "./constants";
 
 export const setToken = (token) => {
-  localStorage.setItem(TOKEN, token);
+  if (typeof window !== "undefined") {
+    localStorage.setItem(TOKEN, token);
+  }
 };
 
 export const getToken = () => {
-  return localStorage.getItem(TOKEN);
+  if (typeof window !== "undefined") {
+    return localStorage.getItem(TOKEN);
+  }
 };
 
 export const removeToken = () => {
-  localStorage.removeItem(TOKEN);
+  if (typeof window !== "undefined") {
+    localStorage.removeItem(TOKEN);
+  }
 };
 
 export const isTokenExpired = (token) => {

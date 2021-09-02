@@ -26,6 +26,7 @@ export const types = {
   removeProductCart: "[Cart] RemoveProductCart",
   removeAllProductsCart: "[Cart] RemoveAllProductsCart",
 
-  // Oreder
+  // Orders
   getOrders: "[Order] GetOrders",
+  resetOrders: "[Order] ResetOrders",
 };

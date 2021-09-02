@@ -1,9 +1,12 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { toast } from "react-toastify";
 import { useAuth } from "../../../../hooks/useAuth";
 import { BASE_PATH } from "../../../../helpers/constants";
 import { authFetch } from "../../../../helpers/fetch";
+import { useOrder } from "../../../../hooks/useOrder";
+import { useCart } from "../../../../hooks/useCart";
 
 const FormPayment = ({ products, address }) => {
   const [succeeded, setSucceeded] = useState(false);
@@ -13,8 +16,11 @@ const FormPayment = ({ products, address }) => {
 
   const stripe = useStripe();
   const elements = useElements();
+  const router = useRouter();
 
   const { auth } = useAuth();
+  const { reloadOrder, deleteOrder } = useOrder();
+  const { removeAllProductsCart } = useCart();
 
   const cardStyle = {
     style: {
@@ -59,27 +65,31 @@ const FormPayment = ({ products, address }) => {
         }),
       };
       const response = await authFetch(url, params, () => null);
-      const { clientSecret, order } = response;
-      console.log(response);
+      const { clientSecret, orderId } = response;
 
       const payload = await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
           card: elements.getElement(CardElement),
         },
       });
-      const { paymentIntent } = payload;
-      order.idPago = paymentIntent.id;
 
       if (payload.error) {
-        setError(`Error en el paggo. ${payload.error.message}`);
+        setError(`Error en el pago. ${payload.error.message}`);
+        toast.error(payload.error.message);
         setProcessing(false);
+        deleteOrder(orderId);
       } else {
+        reloadOrder();
+        toast.success("El pago fue realizado correctamente");
         setError(null);
         setProcessing(false);
         setSucceeded(true);
+        router.push("/pedidos");
+        removeAllProductsCart();
       }
     } catch (err) {
       console.log(err);
+      setProcessing(false);
       toast.error("Error en el servidor, intente nuevamente");
       return null;
     }

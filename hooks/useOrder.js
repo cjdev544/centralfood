@@ -1,6 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { startGetOrders } from "../redux/actions/order";
+import {
+  deleteOrderNoPay,
+  resetOrders,
+  startGetOrders,
+} from "../redux/actions/order";
 
 export const useOrder = () => {
   const dispatch = useDispatch();
@@ -8,15 +12,29 @@ export const useOrder = () => {
   const auth = useSelector((state) => state.auth);
 
   useEffect(() => {
-    if (auth?.uid) getOrders(auth?.uid);
+    if (auth?.uid !== undefined) {
+      getOrders(auth?.uid);
+    }
   }, [auth?.uid]);
 
   const getOrders = () => {
-    if (orders?.length === 0 || !orders) dispatch(startGetOrders(auth?.uid));
+    if (auth?.uid !== undefined) {
+      if (orders?.length === 0 || !orders) dispatch(startGetOrders(auth?.uid));
+    }
+  };
+
+  const reloadOrder = () => {
+    dispatch(resetOrders(auth?.id));
+  };
+
+  const deleteOrder = (orderId) => {
+    dispatch(deleteOrderNoPay(auth?.uid, orderId));
   };
 
   return {
     orders,
     getOrders,
+    reloadOrder,
+    deleteOrder,
   };
 };

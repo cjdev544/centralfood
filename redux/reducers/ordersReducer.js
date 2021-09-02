@@ -12,6 +12,9 @@ export const ordersReducer = (state = initialState, action) => {
         orders: action.payload,
       };
 
+    case types.resetOrders:
+      return initialState;
+
     default:
       return state;
   }
