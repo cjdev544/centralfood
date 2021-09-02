@@ -8,7 +8,7 @@ const SummaryCart = ({ products, totalPriceToPay }) => {
   return (
     <div className="summary-cart">
       <div className="title cart-title">
-        Direcciones
+        Productos
         <div className="plus" onClick={() => removeAllProductsCart()}>
           Vaciar carrito
         </div>

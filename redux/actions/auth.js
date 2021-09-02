@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { uiIsLoading } from "./ui";
 import { setToken } from "../../helpers/token";
 import { authFetch } from "../../helpers/fetch";
+import { useDataUser } from "../../hooks/useDataUser";
 
 export const registerApi = (formData, setShowModal) => {
   const url = `${BASE_PATH}/auth/local/register`;
@@ -47,9 +48,16 @@ export const loginApi = (identifier, password, setShowModal) => {
             setToken(result.jwt);
             dispatch(authUser({ uid: result.user._id, jwt: result.jwt }));
             dispatch(getUser(() => null));
-            if (!result?.jwt) toast.error("Usuario o contraseña incorrecta");
+            if (!result?.jwt) {
+              toast.error("Usuario o contraseña incorrecta");
+            } else {
+              dispatch(getApiAddress());
+            }
           })
-          .catch(() => toast.error("Error al iniciar sesión"));
+          .catch((err) => {
+            console.log(err);
+            toast.error("Error al iniciar sesión");
+          });
       })
       .catch((err) => {
         console.error(err);

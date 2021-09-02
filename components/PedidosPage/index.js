@@ -1,4 +1,3 @@
-import { useAuth } from "../../hooks/useAuth";
 import { useOrder } from "../../hooks/useOrder";
 import DefaultLoader from "../DefaultLoader";
 import OrderList from "./OredrList";

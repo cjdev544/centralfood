@@ -41,6 +41,16 @@ const Cart = () => {
       ) : (
         <>
           <div className="full-cart">
+            {!auth?.user ? (
+              <h2>
+                Crea una cuenta o inicia sesión para poder hacer la compra.
+              </h2>
+            ) : (
+              <h4>
+                Créa ó elije una dirección abajo para habilitar el boton de
+                compra.
+              </h4>
+            )}
             <SummaryCart
               products={productsCart}
               totalPriceToPay={totalPriceToPay}
