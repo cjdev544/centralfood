@@ -1,4 +1,3 @@
-import { useRouter } from "next/dist/client/router";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CART } from "../helpers/constants";

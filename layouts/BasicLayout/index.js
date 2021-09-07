@@ -1,4 +1,5 @@
 import { Container } from "semantic-ui-react";
+import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import { useCart } from "../../hooks/useCart";
 import { useData } from "../../hooks/useData";
@@ -13,6 +14,7 @@ const BasicLayout = ({ children }) => {
     <Container fluid className="basic-layout">
       <Header />
       <Container className="content">{children}</Container>
+      <Footer />
     </Container>
   );
 };

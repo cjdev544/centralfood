@@ -1,5 +1,3 @@
-import { BASE_PATH } from "../../helpers/constants";
-import { authFetch } from "../../helpers/fetch";
 import { types } from "../types";
 
 export const getProductsCart = (cart) => ({
