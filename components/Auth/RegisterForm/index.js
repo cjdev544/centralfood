@@ -1,11 +1,14 @@
+import { useState } from "react";
 import { useFormik } from "formik";
-import { Form, Button } from "semantic-ui-react";
+import { Form, Button, Radio } from "semantic-ui-react";
 import * as Yup from "yup";
 import { v4 as uuidv4 } from "uuid";
 import { useUi } from "../../../hooks/useUi";
 import { useAuth } from "../../../hooks/useAuth";
 
 const RegisterForm = ({ setShowLogin, setShowModal }) => {
+  const [wantSubscribe, setWantSubscribe] = useState(false);
+
   const { isLoading, setIsLoading } = useUi();
 
   const { registerUser } = useAuth();
@@ -29,9 +32,13 @@ const RegisterForm = ({ setShowLogin, setShowModal }) => {
 
     onSubmit: async (formData) => {
       setIsLoading(true);
-      registerUser(formData, setShowModal);
+      registerUser(formData, setShowModal, wantSubscribe);
     },
   });
+
+  const handleRadio = (e, { checked }) => {
+    setWantSubscribe(checked);
+  };
 
   return (
     <Form className="form" onSubmit={formik.handleSubmit}>
@@ -65,6 +72,12 @@ const RegisterForm = ({ setShowLogin, setShowModal }) => {
         autoComplete="current-password"
         onChange={formik.handleChange}
         error={formik.errors.password}
+      />
+      <Radio
+        toggle
+        label="Qiero recibir ofertas y promociones"
+        onChange={handleRadio}
+        name="subscribe"
       />
       <div className="actions">
         <Button type="button" basic onClick={() => setShowLogin(true)}>

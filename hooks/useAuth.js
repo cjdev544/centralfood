@@ -16,12 +16,12 @@ export const useAuth = () => {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
 
-  const loginUser = (identifier, password, setShowModal) => {
-    dispatch(loginApi(identifier, password, setShowModal));
+  const loginUser = (identifier, password, setShowModal, subscribe) => {
+    dispatch(loginApi(identifier, password, setShowModal, subscribe));
   };
 
-  const registerUser = (formData, setShowModal) => {
-    dispatch(registerApi(formData, setShowModal));
+  const registerUser = (formData, setShowModal, subscribe) => {
+    dispatch(registerApi(formData, setShowModal, subscribe));
   };
 
   const resetEmailApi = async (email) => {

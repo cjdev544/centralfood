@@ -1,14 +1,16 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { Button, Form } from "semantic-ui-react";
+import { Button, Form, Radio } from "semantic-ui-react";
 import { useAuth } from "../../../hooks/useAuth";
 import { useUi } from "../../../hooks/useUi";
 import { useRouter } from "next/dist/client/router";
+import { useState } from "react";
 // import { forgotPassword, loginUser } from "../../../api/user";
 
 const LoginForm = ({ setShowLogin, setShowModal }) => {
   const { loginUser, resetEmailApi } = useAuth();
   const { isLoading, setIsLoading } = useUi();
+  const [wantSubscribe, setWantSubscribe] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -22,7 +24,12 @@ const LoginForm = ({ setShowLogin, setShowModal }) => {
 
     onSubmit: async (formData) => {
       setIsLoading(true);
-      loginUser(formData.identifier, formData.password, setShowModal);
+      loginUser(
+        formData.identifier,
+        formData.password,
+        setShowModal,
+        wantSubscribe
+      );
     },
   });
 
@@ -36,6 +43,10 @@ const LoginForm = ({ setShowLogin, setShowModal }) => {
       const res = await resetEmailApi(formik.values.identifier);
       console.log(res);
     }
+  };
+
+  const handleRadio = (e, { checked }) => {
+    setWantSubscribe(checked);
   };
 
   return (
@@ -55,6 +66,12 @@ const LoginForm = ({ setShowLogin, setShowModal }) => {
         autoComplete="current-password"
         onChange={formik.handleChange}
         error={formik.errors.password}
+      />
+      <Radio
+        toggle
+        label="Qiero recibir ofertas y promociones"
+        onChange={handleRadio}
+        name="subscribe"
       />
       <div className="actions">
         <Button type="button" basic onClick={() => setShowLogin(false)}>

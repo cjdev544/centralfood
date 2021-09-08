@@ -6,7 +6,7 @@ import { setToken } from "../../helpers/token";
 import { authFetch } from "../../helpers/fetch";
 import { suscribeEmail } from "../../helpers/suscribeEmail";
 
-export const registerApi = (formData, setShowModal) => {
+export const registerApi = (formData, setShowModal, subscribe) => {
   const url = `${BASE_PATH}/auth/local/register`;
   const params = {
     method: "POST",
@@ -19,7 +19,9 @@ export const registerApi = (formData, setShowModal) => {
   return (dispatch) => {
     fetch(url, params)
       .then(() =>
-        dispatch(loginApi(formData.email, formData.password, setShowModal))
+        dispatch(
+          loginApi(formData.email, formData.password, setShowModal, subscribe)
+        )
       )
       .catch((err) => {
         console.error(err);
@@ -29,7 +31,7 @@ export const registerApi = (formData, setShowModal) => {
   };
 };
 
-export const loginApi = (identifier, password, setShowModal) => {
+export const loginApi = (identifier, password, setShowModal, subscribe) => {
   const url = `${BASE_PATH}/auth/local`;
   const params = {
     method: "POST",
@@ -54,7 +56,7 @@ export const loginApi = (identifier, password, setShowModal) => {
               dispatch(getApiAddress());
 
               // Call suscribe email marketing api
-              suscribeEmail(identifier);
+              if (subscribe) suscribeEmail(identifier);
             }
           })
           .catch((err) => {
