@@ -2,11 +2,17 @@ import Link from "next/link";
 import Image from "next/image";
 import { Icon } from "semantic-ui-react";
 import NoImage from "../../public/no-image.png";
+import PlateBoxMobil from "./PlateBoxMobil";
+import { useMediaQueryJs } from "../../hooks/useMediaQueryJs";
 
 const PlateBox = ({ plate }) => {
+  const { isAMobil } = useMediaQueryJs();
+
   const cutDescription = plate?.descripcion?.substring(0, 51);
 
   if (!plate || !plate?.disponible) return null;
+
+  if (isAMobil) return <PlateBoxMobil plate={plate} />;
 
   return (
     <article className="plate-box">
@@ -28,14 +34,12 @@ const PlateBox = ({ plate }) => {
               )}
             </div>
             <div className="plate-footer">
-              <div className="plate-footer__alergic">
-                {plate?.alergico && (
-                  <div className="plate-footer__alergic">
-                    <Icon name="exclamation circle" />
-                    Producto con alérgenos
-                  </div>
-                )}
-              </div>
+              {plate?.alergico && (
+                <div className="plate-footer__alergic">
+                  <Icon name="exclamation circle" />
+                  Producto con alérgenos
+                </div>
+              )}
               <div className="plate-footer__price">
                 <p>{plate?.precio} €</p>
                 <Icon name="plus circle" />

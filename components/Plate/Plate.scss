@@ -63,6 +63,11 @@
         color: $primary;
         font-size: 25px;
         margin-left: 5px;
+
+        @media screen and (max-width: $mobile) {
+          display: block;
+          margin-right: 10px;
+        }
       }
     }
 
@@ -75,6 +80,11 @@
       position: relative;
       transition: 0.2s;
       width: 200px;
+
+      @media screen and (max-width: $mobile) {
+        left: 0;
+        width: 150px;
+      }
 
       &:hover {
         left: 0;

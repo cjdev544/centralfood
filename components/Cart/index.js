@@ -6,6 +6,7 @@ import ShippingAddress from "./ShippingAddress";
 import SummaryCart from "./SummaryCart";
 import { useAuth } from "../../hooks/useAuth";
 import { useDataUser } from "../../hooks/useDataUser";
+import ArrowBack from "../ArrowBack";
 
 const Cart = () => {
   const { productsCart } = useCart();
@@ -33,34 +34,37 @@ const Cart = () => {
   }, [auth]);
 
   return (
-    <div className="cart">
-      {!productsCart?.length > 0 ? (
-        <div className="empty-cart">
-          <h2>No se han agregado productos al carrito</h2>
-        </div>
-      ) : (
-        <>
-          <div className="full-cart">
-            {!auth?.user ? (
-              <h2>
-                Crea una cuenta o inicia sesión para poder hacer la compra.
-              </h2>
-            ) : (
-              <h4>
-                Créa ó elije una dirección abajo para habilitar el boton de
-                compra.
-              </h4>
-            )}
-            <SummaryCart
-              products={productsCart}
-              totalPriceToPay={totalPriceToPay}
-            />
+    <>
+      <div className="cart">
+        {!productsCart?.length > 0 ? (
+          <div className="empty-cart">
+            <h2>No se han agregado productos al carrito</h2>
           </div>
-          <ShippingAddress setAddress={setAddress} />
-          {address && <Payment products={productsCart} address={address} />}
-        </>
-      )}
-    </div>
+        ) : (
+          <>
+            <div className="full-cart">
+              {!auth?.user ? (
+                <h2>
+                  Crea una cuenta o inicia sesión para poder hacer la compra.
+                </h2>
+              ) : (
+                <h4>
+                  Créa ó elije una dirección abajo para habilitar el boton de
+                  compra.
+                </h4>
+              )}
+              <SummaryCart
+                products={productsCart}
+                totalPriceToPay={totalPriceToPay}
+              />
+            </div>
+            <ShippingAddress setAddress={setAddress} />
+            {address && <Payment products={productsCart} address={address} />}
+          </>
+        )}
+      </div>
+      <ArrowBack />
+    </>
   );
 };
 

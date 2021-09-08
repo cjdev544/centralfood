@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { uiIsLoading } from "./ui";
 import { setToken } from "../../helpers/token";
 import { authFetch } from "../../helpers/fetch";
-import { useDataUser } from "../../hooks/useDataUser";
+import { suscribeEmail } from "../../helpers/suscribeEmail";
 
 export const registerApi = (formData, setShowModal) => {
   const url = `${BASE_PATH}/auth/local/register`;
@@ -52,6 +52,9 @@ export const loginApi = (identifier, password, setShowModal) => {
               toast.error("Usuario o contraseña incorrecta");
             } else {
               dispatch(getApiAddress());
+
+              // Call suscribe email marketing api
+              suscribeEmail(identifier);
             }
           })
           .catch((err) => {

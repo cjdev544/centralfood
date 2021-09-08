@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "../../hooks/useAuth";
+import ArrowBack from "../ArrowBack";
 import Addresses from "./Addresses";
 import AddressForm from "./AddressForm";
 import ChangeEmailForm from "./ChangeEmailForm";
@@ -48,6 +49,7 @@ const UserAccount = () => {
           <ChangePasswordForm />
         </div>
       </section>
+      <ArrowBack />
     </>
   );
 };
