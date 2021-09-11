@@ -34,17 +34,17 @@ export const useDataUser = () => {
   useEffect(() => {
     if (!auth?.addresses) {
       const token = getToken();
-      if (token) {
-        dispatch(getApiAddress());
+      if (token && auth?.uid) {
+        dispatch(getApiAddress(auth?.uid));
       }
     }
-  }, []);
+  }, [auth]);
 
   const getDataUser = () => {
     if (!auth?.addresses) {
       const token = getToken();
-      if (token) {
-        dispatch(getApiAddress());
+      if (token && auth?.uid) {
+        dispatch(getApiAddress(auth?.uid));
       }
     }
   };

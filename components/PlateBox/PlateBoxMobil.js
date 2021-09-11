@@ -6,8 +6,6 @@ import NoImage from "../../public/no-image.png";
 const PlateBoxMobil = ({ plate }) => {
   const cutDescription = plate?.descripcion?.substring(0, 51);
 
-  if (!plate || !plate?.disponible) return null;
-
   return (
     <article className="plate-box-mobile">
       <Link href={`/plato/${plate?.path}`}>

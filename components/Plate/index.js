@@ -20,6 +20,7 @@ const Plate = ({ plate }) => {
   const { addPlateInCart } = useCart();
 
   const { data } = useData();
+
   useEffect(() => {
     if (data?.restaurants) {
       const plateRest = data.restaurants.filter(

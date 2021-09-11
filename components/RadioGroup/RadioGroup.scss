@@ -1,0 +1,17 @@
+.radio-group {
+  &__buttons {
+    margin-bottom: 20px;
+
+    @media screen and (min-width: $table) {
+      display: flex;
+
+      label {
+        margin-right: 20px;
+      }
+    }
+  }
+
+  textarea {
+    margin-bottom: 20px !important;
+  }
+}

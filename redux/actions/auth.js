@@ -139,10 +139,10 @@ export const setUser = (user) => ({
   payload: user,
 });
 
-export const getApiAddress = () => {
+export const getApiAddress = (userId) => {
   return async (dispatch) => {
     try {
-      const url = `${BASE_PATH}/addresses`;
+      const url = `${BASE_PATH}/addresses?user=${userId}`;
       const addresses = await authFetch(url, null, () => null);
       dispatch(getAddress(addresses));
     } catch (err) {

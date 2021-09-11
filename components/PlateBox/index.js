@@ -10,8 +10,6 @@ const PlateBox = ({ plate }) => {
 
   const cutDescription = plate?.descripcion?.substring(0, 51);
 
-  if (!plate || !plate?.disponible) return null;
-
   if (isAMobil) return <PlateBoxMobil plate={plate} />;
 
   return (

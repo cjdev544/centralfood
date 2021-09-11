@@ -7,6 +7,7 @@ import SummaryCart from "./SummaryCart";
 import { useAuth } from "../../hooks/useAuth";
 import { useDataUser } from "../../hooks/useDataUser";
 import ArrowBack from "../ArrowBack";
+import RadioGroup from "../RadioGroup";
 
 const Cart = () => {
   const { productsCart } = useCart();
@@ -14,6 +15,8 @@ const Cart = () => {
   const { auth } = useAuth();
   const [totalPriceToPay, setTotalPriceToPay] = useState(0);
   const { getDataUser } = useDataUser();
+
+  const [values, setValues] = useState({});
 
   useEffect(() => {
     const totalForProductPay = productsCart.map((product) => {
@@ -33,6 +36,12 @@ const Cart = () => {
     if (!auth) getDataUser();
   }, [auth]);
 
+  useEffect(() => {
+    if(values?.shipping === "Recogida el en local"){
+      setAddress("Recogida el en local")
+    }
+  }, [values])
+
   return (
     <>
       <div className="cart">
@@ -48,18 +57,20 @@ const Cart = () => {
                   Crea una cuenta o inicia sesión para poder hacer la compra.
                 </h2>
               ) : (
-                <h4>
-                  Créa ó elije una dirección abajo para habilitar el boton de
-                  compra.
-                </h4>
+                <>
+                  <SummaryCart
+                    products={productsCart}
+                    totalPriceToPay={totalPriceToPay}
+                  />
+                  <RadioGroup setValues={setValues} />
+                </>
               )}
-              <SummaryCart
-                products={productsCart}
-                totalPriceToPay={totalPriceToPay}
-              />
+              {values?.shipping === "Entrega a domicilio" && (
+                <ShippingAddress setAddress={setAddress} />
+              )}
             </div>
-            <ShippingAddress setAddress={setAddress} />
-            {address && <Payment products={productsCart} address={address} />}
+            {values?.shipping === "Entrega a domicilio" && totalPriceToPay > 12  && <Payment products={productsCart} address={address} />}
+            {values?.shipping !== "Entrega a domicilio" && address && <Payment products={productsCart} address={address} />}
           </>
         )}
       </div>
