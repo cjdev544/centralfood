@@ -10,7 +10,7 @@ const Footer = () => {
             <h4>Visita nuestras redes</h4>
             <div className="footer__icon">
               <a
-                href="https://www.facebook.com/search/top?q=centralfoodmalaga"
+                href="https://www.facebook.com/Centralfoodmalaga"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Facebook"

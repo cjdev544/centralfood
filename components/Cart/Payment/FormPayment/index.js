@@ -8,7 +8,7 @@ import { authFetch } from "../../../../helpers/fetch";
 import { useOrder } from "../../../../hooks/useOrder";
 import { useCart } from "../../../../hooks/useCart";
 
-const FormPayment = ({ products, address }) => {
+const FormPayment = ({ products, address, values }) => {
   const [succeeded, setSucceeded] = useState(false);
   const [error, setError] = useState(null);
   const [processing, setProcessing] = useState("");

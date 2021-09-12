@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import DatePicker, { setDefaultLocale } from "react-datepicker";
 import es from "date-fns/locale/es";
-import { Form, Input, Radio, TextArea } from "semantic-ui-react";
+import { Form, Icon, Input, Radio, TextArea } from "semantic-ui-react";
 import moment from "moment";
 
 const RadioGroup = ({ setValues }) => {
@@ -138,6 +138,23 @@ const RadioGroup = ({ setValues }) => {
             />
           </Form.Field>
         </div>
+        {shipping !== "Entrega a domicilio" && (
+          <div>
+            <a
+              href="https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.google.com%2Fmaps%2Fdir%2F%3Fapi%3D1%26destination%3D36.72479%252C-4.45312%26fbclid%3DIwAR0-yOSIpxrmPLCVG4UAzuJyAMxKeUfjxA_dmJOyq5J6TZSq11tSK-F-m0w&h=AT0lkhBDnl63IjBLXwTl2RsbeMQcBQcF-w4caszQWz1A5STUoCTx4Mz2sttub8QN1WxfVNwPzJTsBj1xugM13g1wg7AwPDffObbDmTscS-0U804ltdfeczLxhdAkn9qp_6o"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Mapa"
+              className="centralfood-map"
+            >
+              Ver mapa
+              <Icon name="map marker alternate" />
+            </a>
+            <br />
+            Av Carlos Haya, <br /> con calle Francisco Rueda Perez 1,
+            <br /> local 7 29007 Málaga, España
+          </div>
+        )}
       </Form>
     </>
   );

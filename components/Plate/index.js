@@ -35,10 +35,12 @@ const Plate = ({ plate }) => {
       const url = `${BASE_PATH}/${productPath}/${plate.id}`;
       const response = await fetch(url);
       const result = await response.json();
-      if (!result.disponible) router.replace("/");
-      toast.warning(
-        `${plate?.nombre} no se encuentra disponible en estos momentos`
-      );
+      if (!result.disponible) {
+        router.replace("/");
+        toast.warning(
+          `${plate?.nombre} no se encuentra disponible en estos momentos`
+        );
+      }
     })();
   }, []);
 

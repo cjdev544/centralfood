@@ -5,17 +5,18 @@ import BasicModal from "../../modals/BasicModal";
 import AddressForm from "../../UserAccount/AddressForm";
 import Address from "./Address";
 
-const ShippingAddress = ({ setAddress, values }) => {
+const ShippingAddress = ({
+  setAddress,
+  values,
+  addressActive,
+  setAddressActive,
+}) => {
   const { auth } = useAuth();
   const addresses = auth?.addresses;
-  console.log(values);
-  const [addressActive, setAddressActive] = useState(null);
   const [formModal, setFormModal] = useState(null);
   const [showModal, setShowModal] = useState();
 
   const size = addresses?.length;
-  console.log(size);
-  console.log(values.shipping);
 
   useEffect(() => {
     if (values?.shipping === "Entrega a domicilio" && size === 0) {
@@ -27,6 +28,7 @@ const ShippingAddress = ({ setAddress, values }) => {
   useEffect(() => {
     if (values?.shipping === "Entrega a domicilio" && size === 1) {
       setAddressActive(addresses[0]?.id);
+      setAddress(addresses[0]);
     }
   });
 

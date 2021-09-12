@@ -12,12 +12,14 @@ import RadioGroup from "../RadioGroup";
 const Cart = () => {
   const { productsCart } = useCart();
   const [address, setAddress] = useState(null);
+  const [addressActive, setAddressActive] = useState(null);
+
   const { auth } = useAuth();
   const [totalPriceToPay, setTotalPriceToPay] = useState(0);
   const { getDataUser } = useDataUser();
 
   const [values, setValues] = useState({});
-  console.log(values);
+
   useEffect(() => {
     const totalForProductPay = productsCart.map((product) => {
       const subTotalForProduct = round(product.precio * product.number, 2);
@@ -67,14 +69,29 @@ const Cart = () => {
                 </>
               )}
               {values?.shipping === "Entrega a domicilio" && (
-                <ShippingAddress setAddress={setAddress} values={values} />
+                <ShippingAddress
+                  setAddress={setAddress}
+                  values={values}
+                  addressActive={addressActive}
+                  setAddressActive={setAddressActive}
+                />
               )}
             </div>
             {values?.shipping === "Entrega a domicilio" &&
               totalPriceToPay > 12 &&
-              address && <Payment products={productsCart} address={address} />}
+              addressActive && (
+                <Payment
+                  products={productsCart}
+                  address={address}
+                  values={values}
+                />
+              )}
             {values?.shipping === "Recogida el en local" && (
-              <Payment products={productsCart} address={address} />
+              <Payment
+                products={productsCart}
+                address={address}
+                values={values}
+              />
             )}
           </>
         )}
