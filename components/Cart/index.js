@@ -29,6 +29,7 @@ const Cart = () => {
     totalForProductPay.forEach((element) => {
       totalForPay += element;
     });
+    totalForPay = round(totalForPay, 2);
     setTotalPriceToPay(totalForPay);
   }, [productsCart, auth]);
 
@@ -37,10 +38,10 @@ const Cart = () => {
   }, [auth]);
 
   useEffect(() => {
-    if(values?.shipping === "Recogida el en local"){
-      setAddress("Recogida el en local")
+    if (values?.shipping === "Recogida el en local") {
+      setAddress("Recogida el en local");
     }
-  }, [values])
+  }, [values]);
 
   return (
     <>
@@ -63,14 +64,19 @@ const Cart = () => {
                     totalPriceToPay={totalPriceToPay}
                   />
                   <RadioGroup setValues={setValues} />
+                  <input type="date" />
                 </>
               )}
               {values?.shipping === "Entrega a domicilio" && (
-                <ShippingAddress setAddress={setAddress} />
+                <ShippingAddress setAddress={setAddress} values={values} />
               )}
             </div>
-            {values?.shipping === "Entrega a domicilio" && totalPriceToPay > 12  && <Payment products={productsCart} address={address} />}
-            {values?.shipping !== "Entrega a domicilio" && address && <Payment products={productsCart} address={address} />}
+            {values?.shipping === "Entrega a domicilio" &&
+              totalPriceToPay > 12 &&
+              address && <Payment products={productsCart} address={address} />}
+            {values?.shipping === "Recogida el en local" && (
+              <Payment products={productsCart} address={address} />
+            )}
           </>
         )}
       </div>

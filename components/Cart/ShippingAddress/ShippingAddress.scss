@@ -26,6 +26,10 @@
       top: 35px;
       width: max-content;
 
+      @media screen and (max-width: $mobile) {
+        top: 55px;
+      }
+
       span {
         font-size: 20px;
         margin-left: 5px;

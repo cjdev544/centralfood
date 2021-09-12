@@ -1,19 +1,34 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Grid } from "semantic-ui-react";
 import { useAuth } from "../../../hooks/useAuth";
 import BasicModal from "../../modals/BasicModal";
 import AddressForm from "../../UserAccount/AddressForm";
 import Address from "./Address";
 
-const ShippingAddress = ({ setAddress }) => {
+const ShippingAddress = ({ setAddress, values }) => {
   const { auth } = useAuth();
   const addresses = auth?.addresses;
-
+  console.log(values);
   const [addressActive, setAddressActive] = useState(null);
   const [formModal, setFormModal] = useState(null);
   const [showModal, setShowModal] = useState();
 
   const size = addresses?.length;
+  console.log(size);
+  console.log(values.shipping);
+
+  useEffect(() => {
+    if (values?.shipping === "Entrega a domicilio" && size === 0) {
+      setShowModal(true);
+      openModal("Nueva dirección");
+    }
+  }, [size, values?.shipping]);
+
+  useEffect(() => {
+    if (values?.shipping === "Entrega a domicilio" && size === 1) {
+      setAddressActive(addresses[0]?.id);
+    }
+  });
 
   const openModal = () => {
     setFormModal(<AddressForm setShowModal={setShowModal} />);
@@ -24,9 +39,7 @@ const ShippingAddress = ({ setAddress }) => {
 
   return (
     <section className="shipping-address">
-      <h4>
-        Marca una dirección, al ponerse de color saldrá el boton para pagar.
-      </h4>
+      <h4>Elige una dirección ó crea una nueva</h4>
       <div className="title address-title">
         Dirección de envío
         <div className="plus" onClick={() => openModal("Nueva dirección")}>

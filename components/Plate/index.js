@@ -9,6 +9,7 @@ import { useCart } from "../../hooks/useCart";
 import { round } from "mathjs";
 import { useRouter } from "next/dist/client/router";
 import ArrowBack from "../ArrowBack";
+import { BASE_PATH } from "../../helpers/constants";
 
 const Plate = ({ plate }) => {
   const [rest, setRest] = useState(null);
@@ -20,6 +21,26 @@ const Plate = ({ plate }) => {
   const { addPlateInCart } = useCart();
 
   const { data } = useData();
+
+  useEffect(() => {
+    (async () => {
+      const restaurantProduct = {
+        sushiguay: "sushiguay-platoes",
+        guaywok: "guaywok-platoes",
+        "sabor-casita": "sabor-casita-platoes",
+        tapas: "tapas-platoes",
+        bebidas: "bebidas-platoes",
+      };
+      const productPath = restaurantProduct[plate?.restaurante];
+      const url = `${BASE_PATH}/${productPath}/${plate.id}`;
+      const response = await fetch(url);
+      const result = await response.json();
+      if (!result.disponible) router.replace("/");
+      toast.warning(
+        `${plate?.nombre} no se encuentra disponible en estos momentos`
+      );
+    })();
+  }, []);
 
   useEffect(() => {
     if (data?.restaurants) {
