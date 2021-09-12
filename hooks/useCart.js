@@ -34,6 +34,7 @@ export const useCart = () => {
       const result = await response.json();
       if (result.disponible) array.push(product);
     }
+    localStorage.setItem(CART, JSON.stringify(array));
     dispatch(getProductsCart(array));
   };
 

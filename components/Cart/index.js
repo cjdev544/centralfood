@@ -17,7 +17,7 @@ const Cart = () => {
   const { getDataUser } = useDataUser();
 
   const [values, setValues] = useState({});
-
+  console.log(values);
   useEffect(() => {
     const totalForProductPay = productsCart.map((product) => {
       const subTotalForProduct = round(product.precio * product.number, 2);
@@ -64,7 +64,6 @@ const Cart = () => {
                     totalPriceToPay={totalPriceToPay}
                   />
                   <RadioGroup setValues={setValues} />
-                  <input type="date" />
                 </>
               )}
               {values?.shipping === "Entrega a domicilio" && (

@@ -9,9 +9,18 @@
         margin-right: 20px;
       }
     }
+
+    &.delivery {
+      margin-bottom: 0;
+    }
   }
 
   textarea {
     margin-bottom: 20px !important;
   }
+}
+
+.react-datepicker-wrapper {
+  width: fit-content !important;
+  margin-bottom: 20px;
 }

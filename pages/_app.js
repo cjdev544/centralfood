@@ -5,6 +5,7 @@ import { ToastContainer } from "react-toastify";
 import "../scss/globals.scss";
 import "semantic-ui-css/semantic.min.css";
 import "react-toastify/dist/ReactToastify.css";
+import "react-datepicker/dist/react-datepicker.css";
 import { store } from "../redux/store";
 import BasicLayout from "../layouts/BasicLayout";
 

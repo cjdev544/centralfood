@@ -1,20 +1,37 @@
 import { useEffect, useState } from "react";
+import DatePicker, { setDefaultLocale } from "react-datepicker";
+import es from "date-fns/locale/es";
 import { Form, Input, Radio, TextArea } from "semantic-ui-react";
+import moment from "moment";
 
 const RadioGroup = ({ setValues }) => {
+  setDefaultLocale(es);
+
   const [shipping, setShipping] = useState("");
   const [cutlery, setCutlery] = useState("No");
   const [numberCutlery, setNumberCutlery] = useState(0);
-  const [notes, setNotes] = useState("")
+  const [notes, setNotes] = useState("");
+  const [isDeliveryNow, setIsDeliveryNow] = useState(
+    "Lo antes posible (30 a 40 min)"
+  );
+  const [startDate, setStartDate] = useState(new Date());
+
+  const isCloseDay = (date) => {
+    const day = date.getDay();
+    return day !== 2;
+  };
 
   useEffect(() => {
     setValues({
       shipping,
       cutlery,
       numberCutlery,
-      notes
+      notes,
+      isDeliveryNow,
+      dateDelivery: moment(startDate).format("DD/MM/YY"),
+      timeDelivery: moment(startDate).format("LT"),
     });
-  }, [shipping, cutlery, numberCutlery, notes]);
+  }, [shipping, cutlery, numberCutlery, notes, isDeliveryNow, startDate]);
 
   return (
     <>
@@ -52,10 +69,48 @@ const RadioGroup = ({ setValues }) => {
           )}
         </div>
         <h4>¿Tienes alergias ó deseas eliminar algún ingrediente?</h4>
-        <TextArea 
-          placeholder="Si tienes alguna alergia ó quieres algun producto sin un ingrediente, cuentanos aquí." 
-          onChange={(e) => setNotes(e.target.value)}           
+        <TextArea
+          placeholder="Si tienes alguna alergia ó quieres algun producto sin un ingrediente, cuentanos aquí."
+          onChange={(e) => setNotes(e.target.value)}
         />
+      </Form>
+
+      <Form className="radio-group">
+        <Form.Field>
+          <h4>¿Momento para la entrega?</h4>
+        </Form.Field>
+        <div className="radio-group__buttons delivery">
+          <Form.Field>
+            <Radio
+              label="Lo antes posible (30 a 40 min)"
+              name="radioGroup"
+              value="Lo antes posible (30 a 40 min)"
+              checked={isDeliveryNow === "Lo antes posible (30 a 40 min)"}
+              onChange={(e, { value }) => setIsDeliveryNow(value)}
+            />
+          </Form.Field>
+          <Form.Field>
+            <Radio
+              label="Programar"
+              name="radioGroup"
+              value="Programar"
+              checked={isDeliveryNow === "Programar"}
+              onChange={(e, { value }) => setIsDeliveryNow(value)}
+            />
+          </Form.Field>
+        </div>
+        {isDeliveryNow === "Programar" && (
+          <DatePicker
+            dateFormat="dd/MM/yy h:mm aa"
+            selected={startDate}
+            onChange={(date) => setStartDate(date)}
+            timeInputLabel="Hora:"
+            showTimeInput
+            minDate={new Date()}
+            filterDate={isCloseDay}
+            mini
+          />
+        )}
       </Form>
 
       <Form className="radio-group">
