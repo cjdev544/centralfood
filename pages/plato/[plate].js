@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import DefaultLoader from "../../components/DefaultLoader";
 import Plate from "../../components/Plate";
 import { useData } from "../../hooks/useData";
+import Seo from "../../components/Seo";
 
 const PlatePage = () => {
   const { query } = useRouter();
@@ -12,8 +13,13 @@ const PlatePage = () => {
   )[0];
 
   if (!plate) return <DefaultLoader />;
-
-  return <Plate plate={plate} />;
+  console.log(plate);
+  return (
+    <>
+      <Seo title={plate?.nombre} description={plate?.descripcion} />
+      <Plate plate={plate} />
+    </>
+  );
 };
 
 export default PlatePage;

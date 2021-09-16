@@ -1,4 +1,3 @@
-import { BASE_PATH } from "./constants";
 import { getToken, isTokenExpired } from "./token";
 
 export const authFetch = async (url, params, logout) => {

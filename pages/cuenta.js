@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import DefaultLoader from "../components/DefaultLoader";
+import Seo from "../components/Seo";
 import UserAccount from "../components/UserAccount";
 import { useAuth } from "../hooks/useAuth";
 
@@ -21,7 +22,12 @@ const Account = () => {
     return null;
   }
 
-  return <>{!user ? <DefaultLoader /> : <UserAccount />}</>;
+  return (
+    <>
+      <Seo title="Mi cuenta" />
+      {!user ? <DefaultLoader /> : <UserAccount />}
+    </>
+  );
 };
 
 export default Account;

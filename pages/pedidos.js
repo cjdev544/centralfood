@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import PedidosPage from "../components/PedidosPage";
 import { useAuth } from "../hooks/useAuth";
+import Seo from "../components/Seo";
 
 const Pedidos = () => {
   const [user, setUser] = useState(null);
@@ -20,7 +21,12 @@ const Pedidos = () => {
     return null;
   }
 
-  return <PedidosPage />;
+  return (
+    <>
+      <Seo title="Mis pedidos" />
+      <PedidosPage />
+    </>
+  );
 };
 
 export default Pedidos;

@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import Search from "../components/Search";
+import Seo from "../components/Seo";
 
 const SearchPage = () => {
   const router = useRouter();
@@ -15,7 +16,12 @@ const SearchPage = () => {
     }
   }, [router]);
 
-  return <Search />;
+  return (
+    <>
+      <Seo title={`Buscando: ${router.query.query}`} />
+      <Search />
+    </>
+  );
 };
 
 export default SearchPage;

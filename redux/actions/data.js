@@ -1,5 +1,6 @@
 import { concatArray } from "../../helpers/concatArray";
 import { BASE_PATH } from "../../helpers/constants";
+import { authFetch } from "../../helpers/fetch";
 import { types } from "../types";
 
 export const startGetPromotionPlates = () => {
@@ -141,4 +142,23 @@ export const startGetAllPlates = (restaurants) => {
 const getAllPlates = (plates) => ({
   type: types.getAllPlates,
   payload: plates,
+});
+
+export const startGetPriceDelivery6km = () => {
+  return async (dispatch) => {
+    try {
+      const url = `${BASE_PATH}/costo-envios`;
+      const response = await fetch(url);
+      const result = await response.json();
+      dispatch(getPriceDelivery6km(result[0].delivery6km));
+    } catch (err) {
+      console.log(err);
+      return null;
+    }
+  };
+};
+
+const getPriceDelivery6km = (price) => ({
+  type: types.getPriceDelivery6km,
+  payload: price,
 });

@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   startGetPopularPlates,
+  startGetPriceDelivery6km,
   startGetPromotionPlates,
   startGetRestaurantPlate,
   startGetRestaurants,
@@ -16,6 +17,7 @@ export const useData = () => {
       dispatch(startGetRestaurants());
       dispatch(startGetPromotionPlates());
       dispatch(startGetPopularPlates());
+      dispatch(startGetPriceDelivery6km());
     }
   }, []);
 

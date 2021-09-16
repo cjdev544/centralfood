@@ -32,7 +32,7 @@ const ChangePasswordForm = () => {
 
   return (
     <div className="change-email-form">
-      <h4>Cabiar la contraseña</h4>
+      <h4>Cambiar la contraseña</h4>
       <Form onSubmit={formik.handleSubmit}>
         <Form.Group widths="equal">
           <Form.Input

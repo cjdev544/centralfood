@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { toast } from "react-toastify";
@@ -7,20 +7,32 @@ import { BASE_PATH } from "../../../../helpers/constants";
 import { authFetch } from "../../../../helpers/fetch";
 import { useOrder } from "../../../../hooks/useOrder";
 import { useCart } from "../../../../hooks/useCart";
+import { useData } from "../../../../hooks/useData";
+import { round } from "mathjs";
 
-const FormPayment = ({ products, address, values }) => {
+const FormPayment = ({ products, address, values, totalPriceToPay }) => {
   const [succeeded, setSucceeded] = useState(false);
   const [error, setError] = useState(null);
   const [processing, setProcessing] = useState("");
   const [disabled, setDisabled] = useState(true);
+  const [priceShipping, setPriceShipping] = useState(0);
 
   const stripe = useStripe();
   const elements = useElements();
   const router = useRouter();
 
   const { auth } = useAuth();
+  const { data } = useData();
   const { reloadOrder, deleteOrder } = useOrder();
   const { removeAllProductsCart } = useCart();
+
+  useEffect(() => {
+    if (values?.shipping === "Entrega a domicilio") {
+      setPriceShipping(data?.deliveryPrice6km);
+    } else {
+      setPriceShipping(0);
+    }
+  }, [values?.shipping]);
 
   const cardStyle = {
     style: {
@@ -62,6 +74,8 @@ const FormPayment = ({ products, address, values }) => {
           products,
           idUser: auth.uid,
           addressShipping: address,
+          values,
+          priceShipping,
         }),
       };
       const response = await authFetch(url, params, () => null);
@@ -97,6 +111,10 @@ const FormPayment = ({ products, address, values }) => {
 
   return (
     <form className="form-payment" id="payment-form" onSubmit={handleSubmit}>
+      <p>
+        Total productos: {totalPriceToPay}€ + Costo de envío: {priceShipping}€
+      </p>
+      <h3>Total a pagar: {round(totalPriceToPay + priceShipping, 2)}€</h3>
       <CardElement
         id="card-element"
         options={cardStyle}

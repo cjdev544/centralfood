@@ -8,6 +8,8 @@ import { useAuth } from "../../hooks/useAuth";
 import { useDataUser } from "../../hooks/useDataUser";
 import ArrowBack from "../ArrowBack";
 import RadioGroup from "../RadioGroup";
+import { useMediaQueryJs } from "../../hooks/useMediaQueryJs";
+import SummaryCartMobil from "./SummaryCartMobil";
 
 const Cart = () => {
   const { productsCart } = useCart();
@@ -17,8 +19,8 @@ const Cart = () => {
   const { auth } = useAuth();
   const [totalPriceToPay, setTotalPriceToPay] = useState(0);
   const { getDataUser } = useDataUser();
-
   const [values, setValues] = useState({});
+  const { isAMobil } = useMediaQueryJs();
 
   useEffect(() => {
     const totalForProductPay = productsCart.map((product) => {
@@ -61,10 +63,17 @@ const Cart = () => {
                 </h2>
               ) : (
                 <>
-                  <SummaryCart
-                    products={productsCart}
-                    totalPriceToPay={totalPriceToPay}
-                  />
+                  {isAMobil ? (
+                    <SummaryCartMobil
+                      products={productsCart}
+                      totalPriceToPay={totalPriceToPay}
+                    />
+                  ) : (
+                    <SummaryCart
+                      products={productsCart}
+                      totalPriceToPay={totalPriceToPay}
+                    />
+                  )}
                   <RadioGroup setValues={setValues} />
                 </>
               )}
@@ -84,6 +93,7 @@ const Cart = () => {
                   products={productsCart}
                   address={address}
                   values={values}
+                  totalPriceToPay={totalPriceToPay}
                 />
               )}
             {values?.shipping === "Recogida el en local" && (
@@ -91,6 +101,7 @@ const Cart = () => {
                 products={productsCart}
                 address={address}
                 values={values}
+                totalPriceToPay={totalPriceToPay}
               />
             )}
           </>

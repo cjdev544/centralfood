@@ -59,13 +59,13 @@ const TableCellProduct = ({ product }) => {
         />
         {product?.nombre}
       </Table.Cell>
-      <Table.Cell>{`${product?.precio} €`}</Table.Cell>
+      <Table.Cell>{`${product?.precio}€`}</Table.Cell>
       <Table.Cell className="summary-cart__plus-minus">
         <Icon name="minus circle" link onClick={minusPlate} />
         <span>{counter}</span>
         <Icon name="plus circle" link onClick={plusPlate} />
       </Table.Cell>
-      <Table.Cell className="summary-cart__price">{`${total} €`}</Table.Cell>
+      <Table.Cell className="summary-cart__price">{`${total}€`}</Table.Cell>
     </Table.Row>
   );
 };

@@ -7,7 +7,7 @@ import moment from "moment";
 const RadioGroup = ({ setValues }) => {
   setDefaultLocale(es);
 
-  const [shipping, setShipping] = useState("");
+  const [shipping, setShipping] = useState(null);
   const [cutlery, setCutlery] = useState("No");
   const [numberCutlery, setNumberCutlery] = useState(0);
   const [notes, setNotes] = useState("");
@@ -84,7 +84,7 @@ const RadioGroup = ({ setValues }) => {
             <Radio
               label="Lo antes posible (30 a 40 min)"
               name="radioGroup"
-              value="Lo antes posible (30 a 40 min)"
+              value={"Lo antes posible (30 a 40 min)"}
               checked={isDeliveryNow === "Lo antes posible (30 a 40 min)"}
               onChange={(e, { value }) => setIsDeliveryNow(value)}
             />

@@ -6,6 +6,7 @@ const initialState = {
   restaurants: [],
   plates: [],
   allPlates: null,
+  deliveryPrice6km: null,
 };
 
 export const dataReducer = (state = initialState, action) => {
@@ -43,6 +44,12 @@ export const dataReducer = (state = initialState, action) => {
       return {
         ...state,
         allPlates: action.payload,
+      };
+
+    case types.getPriceDelivery6km:
+      return {
+        ...state,
+        deliveryPrice6km: action.payload,
       };
 
     default:

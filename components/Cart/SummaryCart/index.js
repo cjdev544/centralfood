@@ -4,7 +4,6 @@ import TableCellProduct from "./ProductCart/TableCellProduct";
 
 const SummaryCart = ({ products, totalPriceToPay }) => {
   const { removeAllProductsCart } = useCart();
-
   return (
     <div className="summary-cart">
       <div className="title cart-title">
@@ -29,7 +28,7 @@ const SummaryCart = ({ products, totalPriceToPay }) => {
             ))}
             <Table.Row className="summary-cart__resume">
               <Table.Cell className="clear"></Table.Cell>
-              <Table.Cell colSpan="2">TOTAL A PAGAR:</Table.Cell>
+              <Table.Cell colSpan="2">TOTAL PRODUCTOS:</Table.Cell>
               <Table.Cell className="total-price">{`${totalPriceToPay} €`}</Table.Cell>
             </Table.Row>
           </Table.Body>

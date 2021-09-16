@@ -5,15 +5,18 @@ import FormPayment from "./FormPayment";
 
 const stripePromise = loadStripe(STRIPE_TOKEN);
 
-const Payment = ({ products, address, values }) => {
-  console.log(values);
-  console.log(address);
+const Payment = ({ products, address, values, totalPriceToPay }) => {
   return (
     <section className="payment">
       <div className="title">Pago</div>
       <div className="data">
         <Elements stripe={stripePromise}>
-          <FormPayment products={products} address={address} values={values} />
+          <FormPayment
+            products={products}
+            address={address}
+            values={values}
+            totalPriceToPay={totalPriceToPay}
+          />
         </Elements>
       </div>
     </section>
