@@ -18,6 +18,7 @@ const TopBar = () => {
       router.push(`/busqueda?query=${searchStr}`);
     }
     setLoad(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchStr]);
 
   return (

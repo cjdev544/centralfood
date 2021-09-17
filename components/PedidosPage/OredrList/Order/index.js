@@ -1,12 +1,12 @@
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import moment from "moment";
 import "moment/locale/es";
-import NoImage from "../../../../public/no-image.png";
 import { Icon } from "semantic-ui-react";
+import NoImage from "../../../../public/no-image.png";
 import BasicModal from "../../../modals/BasicModal";
-import { useState } from "react";
-import style from './Order.module.css'
+import style from "./Order.module.css";
 
 const Order = ({ order }) => {
   const { createdAt, direccionEnvio, pedido, totalCompra, id } = order;
@@ -22,10 +22,7 @@ const Order = ({ order }) => {
             <p>
               {moment(createdAt).format("L")} - {moment(createdAt).format("LT")}
             </p>
-            <p
-              className={style.icon}
-              onClick={() => setShowModal(true)}
-            >
+            <p className={style.icon} onClick={() => setShowModal(true)}>
               Ver más{" "}
               <Icon
                 name="eye"

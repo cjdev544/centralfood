@@ -3,9 +3,7 @@ import * as Yup from "yup";
 import { Button, Form, Radio } from "semantic-ui-react";
 import { useAuth } from "../../../hooks/useAuth";
 import { useUi } from "../../../hooks/useUi";
-import { useRouter } from "next/dist/client/router";
 import { useState } from "react";
-// import { forgotPassword, loginUser } from "../../../api/user";
 
 const LoginForm = ({ setShowLogin, setShowModal }) => {
   const { loginUser, resetEmailApi } = useAuth();

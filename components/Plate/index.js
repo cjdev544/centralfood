@@ -10,7 +10,7 @@ import { round } from "mathjs";
 import { useRouter } from "next/dist/client/router";
 import ArrowBack from "../ArrowBack";
 import { BASE_PATH } from "../../helpers/constants";
-import style from './Plate.module.css'
+import style from "./Plate.module.css";
 
 const Plate = ({ plate }) => {
   const [rest, setRest] = useState(null);
@@ -43,6 +43,7 @@ const Plate = ({ plate }) => {
         );
       }
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -56,6 +57,7 @@ const Plate = ({ plate }) => {
 
   useEffect(() => {
     setTotal(round(plate?.precio * counter, 2));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [counter]);
 
   const plusPlate = () => {

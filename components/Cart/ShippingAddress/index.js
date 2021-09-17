@@ -4,7 +4,7 @@ import { useAuth } from "../../../hooks/useAuth";
 import BasicModal from "../../modals/BasicModal";
 import AddressForm from "../../UserAccount/AddressForm";
 import Address from "./Address";
-import style from './ShippingAddress.module.css'
+import style from "./ShippingAddress.module.css";
 
 const ShippingAddress = ({
   setAddress,
@@ -31,7 +31,8 @@ const ShippingAddress = ({
       setAddressActive(addresses[0]?.id);
       setAddress(addresses[0]);
     }
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const openModal = () => {
     setFormModal(<AddressForm setShowModal={setShowModal} />);
@@ -45,7 +46,10 @@ const ShippingAddress = ({
       <h4>Elige una dirección ó crea una nueva</h4>
       <div className={style.title}>
         Dirección de envío
-        <div className={style.plus} onClick={() => openModal("Nueva dirección")}>
+        <div
+          className={style.plus}
+          onClick={() => openModal("Nueva dirección")}
+        >
           Crear dirección<span>+</span>
         </div>
       </div>

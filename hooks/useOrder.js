@@ -15,6 +15,7 @@ export const useOrder = () => {
     if (auth?.uid !== undefined) {
       getOrders(auth?.uid);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [auth?.uid]);
 
   const getOrders = () => {

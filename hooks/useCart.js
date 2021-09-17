@@ -16,6 +16,7 @@ export const useCart = () => {
   useEffect(() => {
     const cart = JSON.parse(localStorage.getItem(CART));
     if (cart) checkProductIsAvailable(cart);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const checkProductIsAvailable = async (products) => {

@@ -32,6 +32,7 @@ const FormPayment = ({ products, address, values, totalPriceToPay }) => {
     } else {
       setPriceShipping(0);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [values?.shipping]);
 
   const cardStyle = {

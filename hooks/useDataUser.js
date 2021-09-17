@@ -29,6 +29,7 @@ export const useDataUser = () => {
         dispatch(getUser(logoutAuth));
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -38,6 +39,7 @@ export const useDataUser = () => {
         dispatch(getApiAddress(auth?.uid));
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [auth]);
 
   const getDataUser = () => {

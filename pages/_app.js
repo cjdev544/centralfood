@@ -2,7 +2,6 @@ import Normalize from "react-normalize";
 import { Provider } from "react-redux";
 import CookieConsent from "react-cookie-consent";
 import { ToastContainer } from "react-toastify";
-// import "../scss/globals.scss";
 import "../css/globals.css";
 import "semantic-ui-css/semantic.min.css";
 import "react-toastify/dist/ReactToastify.css";

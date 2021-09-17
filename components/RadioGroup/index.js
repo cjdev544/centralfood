@@ -3,7 +3,7 @@ import DatePicker, { setDefaultLocale } from "react-datepicker";
 import es from "date-fns/locale/es";
 import { Form, Icon, Input, Radio, TextArea } from "semantic-ui-react";
 import moment from "moment";
-import style from './RadioGroup.module.css'
+import style from "./RadioGroup.module.css";
 
 const RadioGroup = ({ setValues }) => {
   setDefaultLocale(es);
@@ -32,6 +32,7 @@ const RadioGroup = ({ setValues }) => {
       dateDelivery: moment(startDate).format("DD/MM/YY"),
       timeDelivery: moment(startDate).format("LT"),
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shipping, cutlery, numberCutlery, notes, isDeliveryNow, startDate]);
 
   return (
@@ -69,7 +70,9 @@ const RadioGroup = ({ setValues }) => {
             />
           )}
         </div>
-        <h4 className={style.marginTop}>¿Tienes alergias ó deseas eliminar algún ingrediente?</h4>
+        <h4 className={style.marginTop}>
+          ¿Tienes alergias ó deseas eliminar algún ingrediente?
+        </h4>
         <TextArea
           placeholder="Si tienes alguna alergia ó quieres algun producto sin un ingrediente, cuentanos aquí."
           onChange={(e) => setNotes(e.target.value)}

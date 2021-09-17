@@ -21,6 +21,7 @@ const RestaurantPage = () => {
     if (platesExist?.length === 0) {
       getRestaurantPlates(path);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [path]);
 
   useEffect(() => {

@@ -19,6 +19,7 @@ export const useData = () => {
       dispatch(startGetPopularPlates());
       dispatch(startGetPriceDelivery6km());
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getRestaurantPlates = (restaurant) => {

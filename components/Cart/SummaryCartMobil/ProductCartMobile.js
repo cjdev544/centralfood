@@ -9,7 +9,7 @@ import {
   removePlateStorage,
   updatePlateStorage,
 } from "../../../redux/actions/cart";
-import style from './SummaryCartMobile.module.css'
+import style from "./SummaryCartMobile.module.css";
 
 const ProductCartMobile = ({ plate }) => {
   const dispatch = useDispatch();
@@ -20,6 +20,7 @@ const ProductCartMobile = ({ plate }) => {
 
   useEffect(() => {
     setTotal(round(plate?.precio * counter, 2));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [counter]);
 
   useEffect(() => {
@@ -29,6 +30,7 @@ const ProductCartMobile = ({ plate }) => {
     if (counter === 0) {
       deleteProduct();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [counter]);
 
   const plusPlate = () => {
