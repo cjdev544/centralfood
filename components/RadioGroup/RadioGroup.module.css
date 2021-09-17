@@ -5,15 +5,19 @@
 @media screen and (min-width: 576px) {
   .buttons {
     display: flex;
- }
+  }
 
   .buttons label {
     margin-right: 20px;
- }
+  }
 }
 
 .radio-group textarea {
   margin-bottom: 20px !important;
+}
+
+.mapContainer {
+  margin-top: 20px;
 }
 
 .map {

@@ -2,7 +2,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { STRIPE_TOKEN } from "../../../helpers/constants";
 import FormPayment from "./FormPayment";
-import style from './Payment.module.css'
+import style from "./Payment.module.css";
 
 const stripePromise = loadStripe(STRIPE_TOKEN);
 

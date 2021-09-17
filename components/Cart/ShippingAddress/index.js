@@ -27,7 +27,7 @@ const ShippingAddress = ({
   }, [size, values?.shipping]);
 
   useEffect(() => {
-    if (values?.shipping === "Entrega a domicilio" && size === 1) {
+    if (values?.shipping === "Entrega a domicilio" && size > 0) {
       setAddressActive(addresses[0]?.id);
       setAddress(addresses[0]);
     }
@@ -50,7 +50,7 @@ const ShippingAddress = ({
           className={style.plus}
           onClick={() => openModal("Nueva dirección")}
         >
-          Crear dirección<span>+</span>
+          Nueva dirección<span>+</span>
         </div>
       </div>
       <div className={`${style.data} shipping-address`}>

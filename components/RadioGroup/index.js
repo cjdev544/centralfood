@@ -143,7 +143,7 @@ const RadioGroup = ({ setValues }) => {
           </Form.Field>
         </div>
         {shipping !== "Entrega a domicilio" && (
-          <div>
+          <div className={style.mapContainer}>
             <a
               href="https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.google.com%2Fmaps%2Fdir%2F%3Fapi%3D1%26destination%3D36.72479%252C-4.45312%26fbclid%3DIwAR0-yOSIpxrmPLCVG4UAzuJyAMxKeUfjxA_dmJOyq5J6TZSq11tSK-F-m0w&h=AT0lkhBDnl63IjBLXwTl2RsbeMQcBQcF-w4caszQWz1A5STUoCTx4Mz2sttub8QN1WxfVNwPzJTsBj1xugM13g1wg7AwPDffObbDmTscS-0U804ltdfeczLxhdAkn9qp_6o"
               target="_blank"

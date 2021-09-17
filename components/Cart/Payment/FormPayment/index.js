@@ -53,6 +53,22 @@ const FormPayment = ({ products, address, values, totalPriceToPay }) => {
     },
   };
 
+  if (values?.cutlery === "Si") {
+    values.cubiertosParaPersonas = values?.numberCutlery;
+  } else {
+    values.cubiertosParaPersonas = 0;
+  }
+
+  if (values.isDeliveryNow !== "Programar") {
+    values.fechaEntrega = "Hoy";
+    values.horaEntrega = "Lo antes posible";
+  } else {
+    values.fechaEntrega = values?.dateDelivery;
+    values.horaEntrega = values?.timeDelivery;
+  }
+
+  console.log(values);
+
   const handleChange = async (e) => {
     // Listen for changes in the CardElement
     // and display any errors as the customer types their card details
@@ -113,7 +129,10 @@ const FormPayment = ({ products, address, values, totalPriceToPay }) => {
   return (
     <form className="form-payment" id="payment-form" onSubmit={handleSubmit}>
       <p>
-        Total productos: {totalPriceToPay}€ + Costo de envío: {priceShipping}€
+        <span className="payment-span">
+          Total productos: {totalPriceToPay}€
+        </span>
+        <span className="payment-span">Costo de envío: {priceShipping}€</span>
       </p>
       <h3>Total a pagar: {round(totalPriceToPay + priceShipping, 2)}€</h3>
       <CardElement

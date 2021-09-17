@@ -79,6 +79,10 @@ a {
   min-height: 100vh;
 }
 
+img {
+  object-fit: cover;
+}
+
 /* 
  * BasicLayout
 */
@@ -318,6 +322,9 @@ a {
 /* 
  * components/FormPayment
 */
+.payment-span {
+  display: block;
+}
 .form-payment {
   align-self: center;
   border-radius: 7px;
