@@ -32,7 +32,7 @@ const ChangeEmailForm = () => {
   });
 
   return (
-    <div className="change-email-form">
+    <div className="change-form">
       <h4>
         Cambiar Email <span>(Email actual: {email})</span>
       </h4>

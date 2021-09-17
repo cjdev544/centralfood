@@ -1,12 +1,13 @@
 import SectionPlates from "../SectionPlates";
+import style from './PromotionPlates.module.css'
 
 const PromotionPlates = ({ data }) => {
   const { promotionPlates } = data;
 
   return (
-    <section className="promotion-plates">
-      <h2 className="promotion-plates__title">{promotionPlates?.promoTitle}</h2>
-      <div className="promotion-plates__text">
+    <section className={style.promotion}>
+      <h2 className={style.title}>{promotionPlates?.promoTitle}</h2>
+      <div className={style.text}>
         <p>{promotionPlates?.description}</p>
       </div>
       <SectionPlates plates={promotionPlates?.plates} />

@@ -1,6 +1,7 @@
 import { useOrder } from "../../hooks/useOrder";
 import DefaultLoader from "../DefaultLoader";
 import OrderList from "./OredrList";
+import style from './PedidosPage.module.css'
 
 const PedidosPage = () => {
   const { orders, getOrders } = useOrder();
@@ -10,10 +11,10 @@ const PedidosPage = () => {
   if (!orders) return <DefaultLoader />;
 
   return (
-    <div className="pedidos-page">
+    <div className={style.pedidos}>
       <div className="pedidos-page__block">
-        <div className="title">Mis pedidos</div>
-        <div className="data">
+        <div className={style.title}>Mis pedidos</div>
+        <div className={style.data}>
           {orders?.length === 0 ? (
             <h2 className="no-order">
               Todavía no has realizado ninguna compra

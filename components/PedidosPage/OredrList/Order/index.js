@@ -6,6 +6,7 @@ import NoImage from "../../../../public/no-image.png";
 import { Icon } from "semantic-ui-react";
 import BasicModal from "../../../modals/BasicModal";
 import { useState } from "react";
+import style from './Order.module.css'
 
 const Order = ({ order }) => {
   const { createdAt, direccionEnvio, pedido, totalCompra, id } = order;
@@ -14,15 +15,15 @@ const Order = ({ order }) => {
 
   return (
     <>
-      <div className="order">
-        <div className="order__header">
+      <div className={style.order}>
+        <div className={style.header}>
           <p>Pedido: {id}</p>
-          <div className="order__header-flex">
+          <div className={style.flex}>
             <p>
               {moment(createdAt).format("L")} - {moment(createdAt).format("LT")}
             </p>
             <p
-              className="order__header-icon"
+              className={style.icon}
               onClick={() => setShowModal(true)}
             >
               Ver más{" "}
@@ -35,8 +36,8 @@ const Order = ({ order }) => {
           </div>
         </div>
         {pedido?.map((product) => (
-          <div className="order__box" key={product.id}>
-            <div className="order__box-info">
+          <div className={style.box} key={product.id}>
+            <div className={style.info}>
               <Link href={`/plato/${product?.path}`}>
                 <a>
                   <Image
@@ -47,16 +48,16 @@ const Order = ({ order }) => {
                   />
                 </a>
               </Link>
-              <div className="order__box-data">
+              <div className={style.data}>
                 <h2>{product.producto}</h2>
                 <p>Precio unitario: {product.precioUnitario}€</p>
                 <p>Cantidad del producto: {product.cantidadDelProducto}</p>
-                <p>Subtotal: {product.subTotal}</p>
+                <p>Subtotal: {product.subTotal}€</p>
               </div>
             </div>
           </div>
         ))}
-        <p className="order__pay">Total pagado: {totalCompra}€</p>
+        <p className={style.pay}>Total pagado: {totalCompra}€</p>
       </div>
       <BasicModal
         showModal={showModal}

@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { Container, Input, Grid } from "semantic-ui-react";
 import CentralFoodLogo from "../../../public/central-food.png";
 import "react-toastify/dist/ReactToastify.css";
+import style from "./TopBar.module.css";
 
 const TopBar = () => {
   const [searchStr, setSearchStr] = useState("");
@@ -20,20 +21,20 @@ const TopBar = () => {
   }, [searchStr]);
 
   return (
-    <div className="top-bar">
+    <div className={style.topBar}>
       <Container>
-        <Grid className="top-bar">
-          <div className="top-bar__left">
+        <Grid className={style.topBar}>
+          <div className={style.topBar__left}>
             <Link href="/">
-              <a className="logo">
+              <a className={style.logo}>
                 <Image
                   src={CentralFoodLogo}
                   alt="Central Food logo"
                   width={100}
                   height={80}
                 />
-                <div className="logo-text">
-                  <div className="logo-text__title">
+                <div className={style.logoText}>
+                  <div className={style.logoText__title}>
                     <h1>Central Food</h1>
                     <h3>Málaga</h3>
                   </div>
@@ -42,7 +43,7 @@ const TopBar = () => {
               </a>
             </Link>
           </div>
-          <div className="top-bar__right">
+          <div className={`${style.topBar__right} top-bar__right`}>
             <Input
               id="search"
               icon={{ name: "search" }}

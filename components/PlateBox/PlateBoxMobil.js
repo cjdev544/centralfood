@@ -2,12 +2,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { Grid } from "semantic-ui-react";
 import NoImage from "../../public/no-image.png";
+import style from './PlateBoxMobile.module.css'
 
 const PlateBoxMobil = ({ plate }) => {
   const cutDescription = plate?.descripcion?.substring(0, 51);
 
   return (
-    <article className="plate-box-mobile">
+    <article className={`${style.boxMobile} plate-box-mobile`}>
       <Link href={`/plato/${plate?.path}`}>
         <a>
           <Grid className="plate-box-mobile__grid">

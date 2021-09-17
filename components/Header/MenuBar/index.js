@@ -6,6 +6,8 @@ import BasicModal from "../../modals/BasicModal";
 import Auth from "../../Auth";
 import { useAuth } from "../../../hooks/useAuth";
 import { useCart } from "../../../hooks/useCart";
+import style from "./MenuBar.module.css";
+import { useMediaQueryJs } from "../../../hooks/useMediaQueryJs";
 
 const MenuBar = () => {
   const [titleModal, setTitleModal] = useState("Iniciar sesión");
@@ -14,6 +16,7 @@ const MenuBar = () => {
   const { auth, logoutAuth } = useAuth();
   const router = useRouter();
   const { productsInCart } = useCart();
+  const { isLittleMobile } = useMediaQueryJs();
 
   const [numberCart, setNumberCart] = useState(productsInCart);
 
@@ -27,7 +30,7 @@ const MenuBar = () => {
   };
 
   return (
-    <div className="menu-bar">
+    <div className={style.menuBar}>
       <Container className="menu-bar__items">
         {auth?.user ? (
           <>
@@ -35,7 +38,7 @@ const MenuBar = () => {
               <a>
                 <Menu.Item>
                   <Icon name="shopping basket" />
-                  Mis pedidos
+                  {!isLittleMobile && "Mis pedidos"}
                 </Menu.Item>
               </a>
             </Link>
@@ -43,7 +46,8 @@ const MenuBar = () => {
               <a>
                 <Menu.Item>
                   <Icon name="user outline" />
-                  {`${auth?.user?.name} ${auth?.user?.lastname}`}
+                  {!isLittleMobile &&
+                    `${auth?.user?.name} ${auth?.user?.lastname}`}
                 </Menu.Item>
               </a>
             </Link>
@@ -51,7 +55,7 @@ const MenuBar = () => {
               <a>
                 <Menu.Item className="icon_pointer">
                   <Icon name="cart" />
-                  Carrito
+                  {!isLittleMobile && "Carrito"}
                   {numberCart > 0 && (
                     <Label color="red" floating circular>
                       {productsInCart}
@@ -62,7 +66,7 @@ const MenuBar = () => {
             </Link>
             <Menu.Item className="icon_pointer" onClick={handleLogout}>
               <Icon name="power off" />
-              Cerrar sesión
+              {!isLittleMobile && "Cerrar sesión"}
             </Menu.Item>
           </>
         ) : (

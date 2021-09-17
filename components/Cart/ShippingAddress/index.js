@@ -4,6 +4,7 @@ import { useAuth } from "../../../hooks/useAuth";
 import BasicModal from "../../modals/BasicModal";
 import AddressForm from "../../UserAccount/AddressForm";
 import Address from "./Address";
+import style from './ShippingAddress.module.css'
 
 const ShippingAddress = ({
   setAddress,
@@ -40,15 +41,15 @@ const ShippingAddress = ({
   if (!addresses) return null;
 
   return (
-    <section className="shipping-address">
+    <section className={style.shipping}>
       <h4>Elige una dirección ó crea una nueva</h4>
-      <div className="title address-title">
+      <div className={style.title}>
         Dirección de envío
-        <div className="plus" onClick={() => openModal("Nueva dirección")}>
+        <div className={style.plus} onClick={() => openModal("Nueva dirección")}>
           Crear dirección<span>+</span>
         </div>
       </div>
-      <div className="data">
+      <div className={`${style.data} shipping-address`}>
         {size === 0 ? (
           <h3>No hay direcciones creadas</h3>
         ) : (

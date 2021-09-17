@@ -31,7 +31,7 @@ const ChangePasswordForm = () => {
   });
 
   return (
-    <div className="change-email-form">
+    <div className="change-form">
       <h4>Cambiar la contraseña</h4>
       <Form onSubmit={formik.handleSubmit}>
         <Form.Group widths="equal">

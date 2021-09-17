@@ -1,14 +1,15 @@
 import { Container } from "semantic-ui-react";
 import { Link, animateScroll as scroll } from "react-scroll";
+import style from './OptionsMenu.module.css'
 
 const OptionsMenu = ({ plates }) => {
   return (
-    <div className="options-menu">
+    <div className={style.optionsMenu}>
       <Container className="options-menu__container">
         {plates?.plates.map((optionPlates) => (
-          <div className="options-menu__button" key={optionPlates.category}>
+          <div className={style.optionsMenu__button} key={optionPlates.category}>
             <Link
-              activeClass="active"
+              activeClass={style.active}
               to={optionPlates.category}
               spy={true}
               smooth={true}

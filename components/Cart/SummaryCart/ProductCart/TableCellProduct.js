@@ -9,6 +9,7 @@ import {
   removePlateStorage,
   updatePlateStorage,
 } from "../../../../redux/actions/cart";
+import style from '../SummaryCart.module.css'
 
 const TableCellProduct = ({ product }) => {
   const dispatch = useDispatch();
@@ -49,7 +50,7 @@ const TableCellProduct = ({ product }) => {
   };
 
   return (
-    <Table.Row className="summary-cart__product">
+    <Table.Row className={style.product}>
       <Table.Cell>
         <Image
           src={product?.imagen?.url ? product.imagen.url : NoImage}
@@ -60,12 +61,12 @@ const TableCellProduct = ({ product }) => {
         {product?.nombre}
       </Table.Cell>
       <Table.Cell>{`${product?.precio}€`}</Table.Cell>
-      <Table.Cell className="summary-cart__plus-minus">
+      <Table.Cell className={style.plusMinus}>
         <Icon name="minus circle" link onClick={minusPlate} />
         <span>{counter}</span>
         <Icon name="plus circle" link onClick={plusPlate} />
       </Table.Cell>
-      <Table.Cell className="summary-cart__price">{`${total}€`}</Table.Cell>
+      <Table.Cell className={style.price}>{`${total}€`}</Table.Cell>
     </Table.Row>
   );
 };

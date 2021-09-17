@@ -24,7 +24,7 @@ const ChangeNameForm = () => {
   });
 
   return (
-    <div className="change-name-form">
+    <div className="change-form">
       <h4>Cambiar nombre y apellido</h4>
       <Form onSubmit={formik.handleSubmit}>
         <Form.Group widths="equal">

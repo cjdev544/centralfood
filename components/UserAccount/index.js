@@ -5,7 +5,8 @@ import Addresses from "./Addresses";
 import AddressForm from "./AddressForm";
 import ChangeEmailForm from "./ChangeEmailForm";
 import ChangeNameForm from "./ChangeNameForm";
-import ChangePasswordForm from "./ChangePasswordForm";
+import ChangePasswordForm from "./ChangePasswordForm"
+import style from './UserAcount.module.css'
 
 const UserAccount = () => {
   const [titleModal, setTitleModal] = useState("");
@@ -24,14 +25,14 @@ const UserAccount = () => {
 
   return (
     <>
-      <section className="user-account">
-        <div className="title addresses-title">
+      <section className={style.userAccount}>
+        <div className={style.title}>
           Direcciones
-          <div className="plus" onClick={() => openModal("Nueva dirección")}>
+          <div className={style.plus} onClick={() => openModal("Nueva dirección")}>
             Crear dirección<span>+</span>
           </div>
         </div>
-        <div className="data">
+        <div className={style.data}>
           <Addresses
             showModal={showModal}
             setShowModal={setShowModal}
@@ -41,9 +42,9 @@ const UserAccount = () => {
           />
         </div>
       </section>
-      <section className="user-account">
-        <div className="title">Configuración</div>
-        <div className="data">
+      <section className={style.userAccount}>
+        <div className={style.title}>Configuración</div>
+        <div className={style.data}>
           <ChangeNameForm />
           <ChangeEmailForm />
           <ChangePasswordForm />

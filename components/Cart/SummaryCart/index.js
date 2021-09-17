@@ -1,18 +1,19 @@
 import { Table } from "semantic-ui-react";
 import { useCart } from "../../../hooks/useCart";
 import TableCellProduct from "./ProductCart/TableCellProduct";
+import style from "./SummaryCart.module.css";
 
 const SummaryCart = ({ products, totalPriceToPay }) => {
   const { removeAllProductsCart } = useCart();
   return (
-    <div className="summary-cart">
-      <div className="title cart-title">
+    <div className={style.summary}>
+      <div className={style.title}>
         Productos
-        <div className="plus" onClick={() => removeAllProductsCart()}>
+        <div className={style.plus} onClick={() => removeAllProductsCart()}>
           Vaciar carrito
         </div>
       </div>
-      <div className="data">
+      <div className={style.data}>
         <Table celled structured>
           <Table.Header>
             <Table.Row>
@@ -26,10 +27,12 @@ const SummaryCart = ({ products, totalPriceToPay }) => {
             {products?.map((product) => (
               <TableCellProduct key={product.id} product={product} />
             ))}
-            <Table.Row className="summary-cart__resume">
-              <Table.Cell className="clear"></Table.Cell>
+            <Table.Row className={style.resume}>
+              <Table.Cell className={style.clear}></Table.Cell>
               <Table.Cell colSpan="2">TOTAL PRODUCTOS:</Table.Cell>
-              <Table.Cell className="total-price">{`${totalPriceToPay} €`}</Table.Cell>
+              <Table.Cell
+                className={style.total}
+              >{`${totalPriceToPay}€`}</Table.Cell>
             </Table.Row>
           </Table.Body>
         </Table>

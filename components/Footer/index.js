@@ -1,14 +1,15 @@
 import Link from "next/link";
 const { Grid, Container, Icon } = require("semantic-ui-react");
+import style from './Footer.module.css'
 
 const Footer = () => {
   return (
-    <footer className="footer">
+    <footer className={style.footer}>
       <Container>
         <Grid>
           <Grid.Column mobile={16} tablet={8} computer={8}>
             <h4>Visita nuestras redes</h4>
-            <div className="footer__icon">
+            <div className={style.icon}>
               <a
                 href="https://www.facebook.com/Centralfoodmalaga"
                 target="_blank"
@@ -37,7 +38,7 @@ const Footer = () => {
           </Grid.Column>
           <Grid.Column mobile={16} tablet={8} computer={8}>
             <h4>Legales</h4>
-            <div className="footer__legacy">
+            <div className={style.legacy}>
               <Link href="/politica-privacidad">
                 <a>
                   <p>Política de privacidad</p>
@@ -51,7 +52,7 @@ const Footer = () => {
             </div>
           </Grid.Column>
         </Grid>
-        <p className="footer__copy">
+        <p className={style.copy}>
           Elaborado por <span>CjDev544</span>
         </p>
       </Container>

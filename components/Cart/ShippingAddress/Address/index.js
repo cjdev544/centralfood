@@ -1,4 +1,5 @@
 import { Grid } from "semantic-ui-react";
+import style from '../ShippingAddress.module.css'
 
 const Address = ({ address, setAddress, addressActive, setAddressActive }) => {
   const changeAddress = () => {
@@ -9,7 +10,7 @@ const Address = ({ address, setAddress, addressActive, setAddressActive }) => {
   return (
     <Grid.Column mobile={16} tablet={8} computer={4}>
       <div
-        className={addressActive === address.id ? "address active" : "address"}
+        className={addressActive === address.id ? `${style.address} ${style.active}` : `${style.address}`}
         onClick={changeAddress}
       >
         <p>{address.title}</p>

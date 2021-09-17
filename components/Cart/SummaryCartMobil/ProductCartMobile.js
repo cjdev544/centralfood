@@ -9,6 +9,7 @@ import {
   removePlateStorage,
   updatePlateStorage,
 } from "../../../redux/actions/cart";
+import style from './SummaryCartMobile.module.css'
 
 const ProductCartMobile = ({ plate }) => {
   const dispatch = useDispatch();
@@ -49,9 +50,9 @@ const ProductCartMobile = ({ plate }) => {
   };
 
   return (
-    <div className="cart-phone">
+    <div className={style.cartPhone}>
       <Grid className="cart-phone__grid">
-        <Grid.Column width={3} className="phone-grid__image">
+        <Grid.Column width={3} className={style.phoneImage}>
           <Image
             src={plate?.imagen ? plate.imagen?.url : NoImage}
             alt={plate.title}
@@ -63,10 +64,10 @@ const ProductCartMobile = ({ plate }) => {
           <div className="cart-phone__text-info">
             <h4>{plate?.nombre}</h4>
             <span>Precio unitario: {plate?.precio}€</span>
-            <span className="text-info__subtotal">Subtotal: {total}€</span>
+            <span className={style.subtotal}>Subtotal: {total}€</span>
           </div>
         </Grid.Column>
-        <Grid.Column width={5} className="phone-grid__price">
+        <Grid.Column width={5} className={style.phonePrice}>
           <Icon name="minus circle" link onClick={minusPlate} />
           <span>{counter}</span>
           <Icon name="plus circle" link onClick={plusPlate} />

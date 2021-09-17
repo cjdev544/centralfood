@@ -10,6 +10,7 @@ import { round } from "mathjs";
 import { useRouter } from "next/dist/client/router";
 import ArrowBack from "../ArrowBack";
 import { BASE_PATH } from "../../helpers/constants";
+import style from './Plate.module.css'
 
 const Plate = ({ plate }) => {
   const [rest, setRest] = useState(null);
@@ -78,7 +79,7 @@ const Plate = ({ plate }) => {
 
   return (
     <>
-      <Grid className="plate">
+      <Grid className={`${style.plate} plate`}>
         <Grid.Column mobile={16} tablet={6} computer={6}>
           <Image
             src={plate.imagen.url ? plate.imagen.url : NoImage}
@@ -86,7 +87,7 @@ const Plate = ({ plate }) => {
             width={340}
             height={260}
           />
-          <div className="plate__category">
+          <div className={style.category}>
             <p>{rest.type}</p>
             <p>
               Categoria: <span>{plate.categoria.category}</span>
@@ -94,18 +95,18 @@ const Plate = ({ plate }) => {
           </div>
         </Grid.Column>
         <Grid.Column mobile={16} tablet={10} computer={10}>
-          <div className="plate__title">{plate.nombre.toUpperCase()}</div>
-          <div className="plate__rest">
+          <div className={style.title}>{plate.nombre.toUpperCase()}</div>
+          <div className={style.rest}>
             Restaurante: <span>{rest.name}</span>
           </div>
-          <div className="plate__description">{plate.descripcion}</div>
-          <div className="plate__plus-minus">
+          <div className={style.description}>{plate.descripcion}</div>
+          <div className={style.minus}>
             <Icon name="minus circle" link onClick={minusPlate} />
             <span>{counter}</span>
             <Icon name="plus circle" link onClick={plusPlate} />
           </div>
-          <div className="plate__buy">
-            <div className="plate__buy-price">
+          <div className={style.buy}>
+            <div className={style.price}>
               <p>
                 Precio: <span>{`${total} €`}</span>
               </p>

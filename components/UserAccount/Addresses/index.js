@@ -2,6 +2,7 @@ import { Grid } from "semantic-ui-react";
 import { useAuth } from "../../../hooks/useAuth";
 import BasicModal from "../../modals/BasicModal";
 import Address from "./Address";
+import style from './Addresses.module.css'
 
 const Addresses = ({
   title,
@@ -17,9 +18,9 @@ const Addresses = ({
   return (
     <section className="addresses">
       <div className="data">
-        <div className="list-address">
+        <div className={style.listAddresses}>
           {size === 0 || !size ? (
-            <h3 className="text">No hay direcciones creadas</h3>
+            <h3 className={style.text}>No hay direcciones creadas</h3>
           ) : (
             <Grid>
               {addresses?.map((address) => (

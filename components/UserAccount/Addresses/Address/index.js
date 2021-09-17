@@ -1,6 +1,7 @@
 import { Button } from "semantic-ui-react";
 import { useAuth } from "../../../../hooks/useAuth";
 import { useUi } from "../../../../hooks/useUi";
+import style from './Address.module.css'
 
 const Address = ({ address, openModal }) => {
   const { deleteAddress } = useAuth();
@@ -16,7 +17,7 @@ const Address = ({ address, openModal }) => {
   };
 
   return (
-    <div className="address">
+    <div className={`${style.address} address`}>
       <p>{address.title}</p>
       <p>{address.name}</p>
       <p>{address.address}</p>

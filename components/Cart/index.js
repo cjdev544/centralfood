@@ -10,6 +10,8 @@ import ArrowBack from "../ArrowBack";
 import RadioGroup from "../RadioGroup";
 import { useMediaQueryJs } from "../../hooks/useMediaQueryJs";
 import SummaryCartMobil from "./SummaryCartMobil";
+import style from "./Cart.module.css";
+import { toast } from "react-toastify";
 
 const Cart = () => {
   const { productsCart } = useCart();
@@ -39,6 +41,7 @@ const Cart = () => {
 
   useEffect(() => {
     if (!auth) getDataUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [auth]);
 
   useEffect(() => {
@@ -47,11 +50,23 @@ const Cart = () => {
     }
   }, [values]);
 
+  useEffect(() => {
+    if (
+      values?.shipping === "Entrega a domicilio" &&
+      totalPriceToPay < 12 &&
+      addressActive
+    ) {
+      toast.warning(
+        "El pedido mínimo para entrega a domicilio debe ser de al menos 12€"
+      );
+    }
+  }, [values?.shipping, totalPriceToPay, addressActive]);
+
   return (
     <>
       <div className="cart">
         {!productsCart?.length > 0 ? (
-          <div className="empty-cart">
+          <div className={style.emptyCart}>
             <h2>No se han agregado productos al carrito</h2>
           </div>
         ) : (

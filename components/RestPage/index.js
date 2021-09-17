@@ -1,5 +1,6 @@
 import DefaultLoader from "../DefaultLoader";
 import SectionPlates from "../SectionPlates";
+import style from './RestPage.module.css'
 
 const RestPage = ({ plates, path }) => {
   const pageRest = {
@@ -16,14 +17,14 @@ const RestPage = ({ plates, path }) => {
 
   return (
     <div className="rest-page">
-      <h2 className="rest-page__title">{restaurant}</h2>
+      <h2 className={style.title}>{restaurant}</h2>
       {plates?.plates?.map((plate) => (
         <section
           className="rest-page__option"
           key={plate.category}
           id={plate.category}
         >
-          <h3 className="rest-page__option-title">{plate.category}</h3>
+          <h3 className={style.optionTitle}>{plate.category}</h3>
           <SectionPlates plates={plate.plates} />
         </section>
       ))}

@@ -3,6 +3,7 @@ import DatePicker, { setDefaultLocale } from "react-datepicker";
 import es from "date-fns/locale/es";
 import { Form, Icon, Input, Radio, TextArea } from "semantic-ui-react";
 import moment from "moment";
+import style from './RadioGroup.module.css'
 
 const RadioGroup = ({ setValues }) => {
   setDefaultLocale(es);
@@ -37,9 +38,9 @@ const RadioGroup = ({ setValues }) => {
     <>
       <Form className="radio-group">
         <Form.Field>
-          <h4>¿Deseas cubiertos?</h4>
+          <h4 className={style.marginTop}>¿Deseas cubiertos?</h4>
         </Form.Field>
-        <div className="radio-group__buttons">
+        <div className={style.buttons}>
           <Form.Field>
             <Radio
               label="No"
@@ -68,7 +69,7 @@ const RadioGroup = ({ setValues }) => {
             />
           )}
         </div>
-        <h4>¿Tienes alergias ó deseas eliminar algún ingrediente?</h4>
+        <h4 className={style.marginTop}>¿Tienes alergias ó deseas eliminar algún ingrediente?</h4>
         <TextArea
           placeholder="Si tienes alguna alergia ó quieres algun producto sin un ingrediente, cuentanos aquí."
           onChange={(e) => setNotes(e.target.value)}
@@ -77,9 +78,9 @@ const RadioGroup = ({ setValues }) => {
 
       <Form className="radio-group">
         <Form.Field>
-          <h4>¿Momento para la entrega?</h4>
+          <h4 className={style.marginTop}>¿Momento para la entrega?</h4>
         </Form.Field>
-        <div className="radio-group__buttons delivery">
+        <div className={style.delivery}>
           <Form.Field>
             <Radio
               label="Lo antes posible (30 a 40 min)"
@@ -115,10 +116,10 @@ const RadioGroup = ({ setValues }) => {
 
       <Form className="radio-group">
         <Form.Field>
-          <h4>¿Cómo quieres realizar tu pedido?</h4>
+          <h4 className={style.marginTop}>¿Cómo quieres realizar tu pedido?</h4>
           <span>La compra mínima para entrega a domicilio es de 12</span>
         </Form.Field>
-        <div className="radio-group__buttons">
+        <div className={style.buttons}>
           <Form.Field>
             <Radio
               label="Recogida el en local"
@@ -145,7 +146,7 @@ const RadioGroup = ({ setValues }) => {
               target="_blank"
               rel="noreferrer"
               aria-label="Mapa"
-              className="centralfood-map"
+              className={style.map}
             >
               Ver mapa
               <Icon name="map marker alternate" />

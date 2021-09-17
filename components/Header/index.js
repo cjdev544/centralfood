@@ -6,6 +6,7 @@ import MenuBar from "./MenuBar";
 import MenuRestaurants from "./MenuRestaurants";
 import OptionsMenu from "./OptionsMenu";
 import TopBar from "./TopBar";
+import style from "./Header.module.css";
 
 const Header = () => {
   const [showMenuRestaurant, setShowMenuRestaurant] = useState(true);
@@ -33,10 +34,10 @@ const Header = () => {
 
   return (
     <>
-      <div className="header">
+      <div className={style.header}>
         <TopBar />
       </div>
-      <div className="header__fix">
+      <div className={style.header__fix}>
         <MenuBar />
         {showMenuRestaurant && <MenuRestaurants />}
         {plates?.restaurant && !isAMobil && <OptionsMenu plates={plates} />}
