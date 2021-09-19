@@ -9,7 +9,7 @@ import {
   removePlateStorage,
   updatePlateStorage,
 } from "../../../../redux/actions/cart";
-import style from '../SummaryCart.module.css'
+import style from "../SummaryCart.module.css";
 
 const TableCellProduct = ({ product }) => {
   const dispatch = useDispatch();
@@ -20,6 +20,7 @@ const TableCellProduct = ({ product }) => {
 
   useEffect(() => {
     setTotal(round(product?.precio * counter, 2));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [counter]);
 
   useEffect(() => {
@@ -29,6 +30,7 @@ const TableCellProduct = ({ product }) => {
     if (counter === 0) {
       deleteProduct();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [counter]);
 
   const plusPlate = () => {

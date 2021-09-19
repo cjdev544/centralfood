@@ -42,8 +42,6 @@ export const authReducer = (state = initialState, action) => {
       };
 
     case types.deleteAddress:
-      console.log(action.payload);
-      console.log(state.addresses);
       return {
         ...state,
         addresses: state.addresses.filter(

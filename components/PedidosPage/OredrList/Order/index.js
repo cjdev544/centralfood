@@ -23,12 +23,7 @@ const Order = ({ order }) => {
               {moment(createdAt).format("L")} - {moment(createdAt).format("LT")}
             </p>
             <p className={style.icon} onClick={() => setShowModal(true)}>
-              Ver más{" "}
-              <Icon
-                name="eye"
-                circular
-                onClick={() => console.log("mostrar modal")}
-              />
+              Ver más <Icon name="eye" circular />
             </p>
           </div>
         </div>

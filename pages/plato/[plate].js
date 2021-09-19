@@ -13,7 +13,7 @@ const PlatePage = () => {
   )[0];
 
   if (!plate) return <DefaultLoader />;
-  console.log(plate);
+
   return (
     <>
       <Seo title={plate?.nombre} description={plate?.descripcion} />

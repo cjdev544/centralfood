@@ -67,8 +67,6 @@ const FormPayment = ({ products, address, values, totalPriceToPay }) => {
     values.horaEntrega = values?.timeDelivery;
   }
 
-  console.log(values);
-
   const handleChange = async (e) => {
     // Listen for changes in the CardElement
     // and display any errors as the customer types their card details

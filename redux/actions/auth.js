@@ -164,7 +164,6 @@ export const registerAddress = (data, setShowModal) => {
         body: JSON.stringify(data),
       };
       const address = await authFetch(url, params, () => null);
-      console.log(address);
       dispatch(setAddress(address));
       dispatch(uiIsLoading(false));
       setShowModal(false);
@@ -215,7 +214,7 @@ export const stratUpdateAddresss = (address, setShowModal) => {
       const res = await authFetch(url, params, () => null);
       dispatch(uiIsLoading(false));
       dispatch(updateAddress(res));
-      dispatch(getApiAddress());
+      dispatch(getApiAddress(address.user.id));
       setShowModal(false);
       toast.success("Dirección actualizada");
     } catch (err) {

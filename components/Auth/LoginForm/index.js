@@ -39,7 +39,6 @@ const LoginForm = ({ setShowLogin, setShowModal }) => {
       formik.setErrors({ identifier: true });
     } else {
       const res = await resetEmailApi(formik.values.identifier);
-      console.log(res);
     }
   };
 

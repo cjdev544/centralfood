@@ -53,7 +53,7 @@ const AddressForm = ({ setShowModal, address }) => {
         name="title"
         type="text"
         label="Título de la dirección"
-        placeholder="Título de la dirección. Ejmp: Mi Casa"
+        placeholder="Ejmp: Mi Casa"
         onChange={formik.handleChange}
         value={formik.values.title}
         error={formik.errors.title}
