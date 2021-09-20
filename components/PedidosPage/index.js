@@ -1,7 +1,7 @@
 import { useOrder } from "../../hooks/useOrder";
 import DefaultLoader from "../DefaultLoader";
 import OrderList from "./OredrList";
-import style from './PedidosPage.module.css'
+import style from "./PedidosPage.module.css";
 
 const PedidosPage = () => {
   const { orders, getOrders } = useOrder();
@@ -9,7 +9,7 @@ const PedidosPage = () => {
   getOrders();
 
   if (!orders) return <DefaultLoader />;
-
+  console.log(orders);
   return (
     <div className={style.pedidos}>
       <div className="pedidos-page__block">
