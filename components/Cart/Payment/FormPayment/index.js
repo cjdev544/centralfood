@@ -23,7 +23,7 @@ const FormPayment = ({ products, address, values, totalPriceToPay }) => {
 
   const { auth } = useAuth();
   const { data } = useData();
-  const { reloadOrder, deleteOrder } = useOrder();
+  const { reloadOrder, deleteOrder, addOrderInFirebase, getOrder } = useOrder();
   const { removeAllProductsCart } = useCart();
 
   useEffect(() => {
@@ -109,6 +109,12 @@ const FormPayment = ({ products, address, values, totalPriceToPay }) => {
         deleteOrder(orderId);
       } else {
         reloadOrder();
+        // Create order in firebase
+        const orderStrapi = await getOrder(orderId);
+        await addOrderInFirebase(orderId, {
+          ...orderStrapi,
+          userId: auth.uid,
+        });
         toast.success("El pago fue realizado correctamente");
         setError(null);
         setProcessing(false);

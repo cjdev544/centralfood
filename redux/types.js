@@ -30,4 +30,5 @@ export const types = {
   // Orders
   getOrders: "[Order] GetOrders",
   resetOrders: "[Order] ResetOrders",
+  changeOrder: "[Order] ChangeOrder",
 };

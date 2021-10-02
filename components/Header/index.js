@@ -7,8 +7,9 @@ import MenuRestaurants from "./MenuRestaurants";
 import OptionsMenu from "./OptionsMenu";
 import TopBar from "./TopBar";
 import style from "./Header.module.css";
+import OrderAlert from "../OrderAlert";
 
-const Header = () => {
+const Header = ({ ordersAlert }) => {
   const [showMenuRestaurant, setShowMenuRestaurant] = useState(true);
 
   const router = useRouter();
@@ -41,6 +42,10 @@ const Header = () => {
         <MenuBar />
         {showMenuRestaurant && <MenuRestaurants />}
         {plates?.restaurant && !isAMobil && <OptionsMenu plates={plates} />}
+        {ordersAlert?.length > 0 &&
+          ordersAlert?.map((order) => (
+            <OrderAlert key={order.id} order={order} />
+          ))}
       </div>
     </>
   );

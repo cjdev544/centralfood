@@ -15,6 +15,14 @@ export const ordersReducer = (state = initialState, action) => {
     case types.resetOrders:
       return initialState;
 
+    case types.changeOrder:
+      return {
+        ...state,
+        orders: state.orders.map((order) =>
+          order.id === action.payload.id ? action.payload : order
+        ),
+      };
+
     default:
       return state;
   }

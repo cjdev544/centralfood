@@ -9,7 +9,5 @@ export const suscribeEmail = async (email) => {
     method: "POST",
   });
 
-  const result = await res.json();
-
-  console.log(result);
+  await res.json();
 };

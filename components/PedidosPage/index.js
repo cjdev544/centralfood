@@ -4,12 +4,10 @@ import OrderList from "./OredrList";
 import style from "./PedidosPage.module.css";
 
 const PedidosPage = () => {
-  const { orders, getOrders } = useOrder();
-
-  getOrders();
+  const { orders } = useOrder();
 
   if (!orders) return <DefaultLoader />;
-  console.log(orders);
+
   return (
     <div className={style.pedidos}>
       <div className="pedidos-page__block">
