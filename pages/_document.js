@@ -8,6 +8,11 @@ class MyDocument extends Document {
           <link rel="manifest" href="/manifest.json" />
           <link rel="apple-touch-icon" href="/icon.png"></link>
           <meta name="theme-color" content="#fff" />
+          <script
+            async
+            defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBERa0jlcgpGXzcp-b2w5FdrhwcjAUe-tM&libraries=places&callback=initMap"
+          ></script>
         </Head>
         <body>
           <Main />

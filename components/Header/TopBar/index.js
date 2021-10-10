@@ -31,8 +31,8 @@ const TopBar = () => {
                 <Image
                   src={CentralFoodLogo}
                   alt="Central Food logo"
-                  width={100}
-                  height={80}
+                  width={200}
+                  height={200}
                 />
                 <div className={style.logoText}>
                   <div className={style.logoText__title}>

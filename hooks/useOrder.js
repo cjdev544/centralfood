@@ -62,7 +62,7 @@ export const useOrder = () => {
 
   const compareOrder = (order) => {
     const orderCompare = orders?.filter(
-      (myOrder) => myOrder.id === order.id
+      (myOrder) => myOrder.id === order?.id
     )[0];
     if (
       orderCompare?.deliveryIn !== order?.deliveryIn ||
@@ -75,7 +75,7 @@ export const useOrder = () => {
   const getOrders = () => {
     if (auth?.uid !== undefined) {
       // por que entra
-      if (orders?.length === 0 || !orders) {
+      if (!orders) {
         dispatch(startGetOrders(auth?.uid));
       }
     }

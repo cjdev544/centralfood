@@ -34,5 +34,5 @@ export const getAllOrdersFirebase = async (userId) => {
   querySnapshot.forEach((doc) => {
     array.push({ id: doc.id, ...doc.data() });
   });
-  return array;
+  return array.reverse();
 };

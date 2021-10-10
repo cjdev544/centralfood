@@ -15,6 +15,7 @@ const BasicLayout = ({ children }) => {
 
   return (
     <Container fluid className="basic-layout">
+      <div className="dark" />
       <Header ordersAlert={ordersAlert} />
       <Container className="content">{children}</Container>
       <Footer />

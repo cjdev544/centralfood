@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import PedidosPage from "../components/PedidosPage";
 import { useAuth } from "../hooks/useAuth";
+import { useOrder } from "../hooks/useOrder";
 import Seo from "../components/Seo";
 
 const Pedidos = () => {
@@ -9,6 +10,7 @@ const Pedidos = () => {
 
   const router = useRouter();
   const { auth } = useAuth();
+  useOrder();
 
   useEffect(() => {
     setUser(auth?.user);

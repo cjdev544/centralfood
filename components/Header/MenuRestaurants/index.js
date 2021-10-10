@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Container } from "semantic-ui-react";
 import { useData } from "../../../hooks/useData";
-import style from './MenuRestaurants.module.css'
+import style from "./MenuRestaurants.module.css";
 
 const MenuRestaurants = () => {
   const { data } = useData();
@@ -10,6 +10,10 @@ const MenuRestaurants = () => {
 
   return (
     <div className={style.menuRest}>
+      <div className={style.textinfo}>
+        <p>Tres restaurantes, tres estilos.</p>
+        <p>Dale click en el logo y ve todos sus platos</p>
+      </div>
       <Container>
         <div className={style.container}>
           {restaurants?.map((rest) => (
@@ -21,8 +25,8 @@ const MenuRestaurants = () => {
                       <Image
                         src={rest.image}
                         alt={rest.name}
-                        width={200}
-                        height={200}
+                        width={300}
+                        height={300}
                       />
                       <h2>{rest.name}</h2>
                       <p>{rest.type}</p>

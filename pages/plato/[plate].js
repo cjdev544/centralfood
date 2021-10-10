@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import DefaultLoader from "../../components/DefaultLoader";
 import Plate from "../../components/Plate";
 import { useData } from "../../hooks/useData";
+import LeyComponent from "../../components/LeyComponent";
 import Seo from "../../components/Seo";
 
 const PlatePage = () => {
@@ -18,6 +19,7 @@ const PlatePage = () => {
     <>
       <Seo title={plate?.nombre} description={plate?.descripcion} />
       <Plate plate={plate} />
+      <LeyComponent />
     </>
   );
 };

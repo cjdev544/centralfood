@@ -1,9 +1,10 @@
-import Head from "next/head";
 import DefaultLoader from "../components/DefaultLoader";
+import Autocomplete from "../components/Autocomplete";
 import PopularePlates from "../components/PopularPlates";
 import PromotionPlates from "../components/PromotionPlates";
 import Seo from "../components/Seo";
 import { useData } from "../hooks/useData";
+import PlacesAutocompleteGoogle from "../components/PlacesAutocompleteGoogle";
 
 export default function Home() {
   const { data } = useData();
@@ -14,6 +15,10 @@ export default function Home() {
     <>
       <Seo title="Inicio" />
       <main>
+        {/* <AutocompletePlace /> */}
+        {/* <PlacesAutocomplete /> */}
+        {/* <Autocomplete /> */}
+        {/* <PlacesAutocompleteGoogle /> */}
         {data?.promotionPlates && <PromotionPlates data={data} />}
         {data?.popularPlates && <PopularePlates data={data} />}
       </main>

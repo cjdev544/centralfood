@@ -108,7 +108,6 @@ const FormPayment = ({ products, address, values, totalPriceToPay }) => {
         setProcessing(false);
         deleteOrder(orderId);
       } else {
-        reloadOrder();
         // Create order in firebase
         const orderStrapi = await getOrder(orderId);
         await addOrderInFirebase(orderId, {
@@ -119,6 +118,7 @@ const FormPayment = ({ products, address, values, totalPriceToPay }) => {
         setError(null);
         setProcessing(false);
         setSucceeded(true);
+        reloadOrder();
         router.push("/pedidos");
         removeAllProductsCart();
       }

@@ -6,8 +6,8 @@ import BasicModal from "../../modals/BasicModal";
 import Auth from "../../Auth";
 import { useAuth } from "../../../hooks/useAuth";
 import { useCart } from "../../../hooks/useCart";
-import style from "./MenuBar.module.css";
 import { useMediaQueryJs } from "../../../hooks/useMediaQueryJs";
+import style from "./MenuBar.module.css";
 
 const MenuBar = () => {
   const [titleModal, setTitleModal] = useState("Iniciar sesión");
