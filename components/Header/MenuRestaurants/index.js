@@ -11,8 +11,10 @@ const MenuRestaurants = () => {
   return (
     <div className={style.menuRest}>
       <div className={style.textinfo}>
-        <p>Tres restaurantes, tres estilos.</p>
-        <p>Dale click en el logo y ve todos sus platos</p>
+        <p>
+          Tres restaurantes, tres estilos. Dale click en el logo y ve todos sus
+          platos
+        </p>
       </div>
       <Container>
         <div className={style.container}>

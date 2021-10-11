@@ -12,9 +12,7 @@ const RadioGroup = ({ setValues }) => {
   const [cutlery, setCutlery] = useState("No");
   const [numberCutlery, setNumberCutlery] = useState(0);
   const [notes, setNotes] = useState("");
-  const [isDeliveryNow, setIsDeliveryNow] = useState(
-    "Lo antes posible (30 a 40 min)"
-  );
+  const [isDeliveryNow, setIsDeliveryNow] = useState("Lo antes posible");
   const [startDate, setStartDate] = useState(new Date());
 
   const isCloseDay = (date) => {
@@ -86,10 +84,10 @@ const RadioGroup = ({ setValues }) => {
         <div className={style.delivery}>
           <Form.Field>
             <Radio
-              label="Lo antes posible (30 a 40 min)"
+              label="Lo antes posible"
               name="radioGroup"
-              value={"Lo antes posible (30 a 40 min)"}
-              checked={isDeliveryNow === "Lo antes posible (30 a 40 min)"}
+              value={"Lo antes posible"}
+              checked={isDeliveryNow === "Lo antes posible"}
               onChange={(e, { value }) => setIsDeliveryNow(value)}
             />
           </Form.Field>
@@ -120,7 +118,7 @@ const RadioGroup = ({ setValues }) => {
       <Form className="radio-group">
         <Form.Field>
           <h4 className={style.marginTop}>¿Cómo quieres realizar tu pedido?</h4>
-          <span>La compra mínima para entrega a domicilio es de 12</span>
+          <span>La compra mínima para entrega a domicilio es de 12€</span>
         </Form.Field>
         <div className={style.buttons}>
           <Form.Field>

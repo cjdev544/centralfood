@@ -19,6 +19,7 @@ const AddressForm = ({ setShowModal, address }) => {
       name: address?.name || "",
       // zone: address?.zona?.address[0] || "",
       dni: address?.dni || "",
+      postalCode: address?.postalCode || "",
       details: address?.details || "",
       phone: address?.phone || "",
     },
@@ -27,6 +28,7 @@ const AddressForm = ({ setShowModal, address }) => {
       name: Yup.string().required(true),
       //zona: Yup.string().required(true),
       dni: Yup.string().required(true),
+      postalCode: Yup.string().required(true),
       details: Yup.string().required(true),
       phone: Yup.string().required(true),
     }),
@@ -54,16 +56,16 @@ const AddressForm = ({ setShowModal, address }) => {
 
   return (
     <Form className="addres-form" onSubmit={formik.handleSubmit}>
+      <Form.Input
+        name="title"
+        type="text"
+        label="Título de la dirección"
+        placeholder="Ejmp: Mi Casa"
+        onChange={formik.handleChange}
+        value={formik.values.title}
+        error={formik.errors.title}
+      />
       <Form.Group widths="equal">
-        <Form.Input
-          name="title"
-          type="text"
-          label="Título de la dirección"
-          placeholder="Ejmp: Mi Casa"
-          onChange={formik.handleChange}
-          value={formik.values.title}
-          error={formik.errors.title}
-        />
         <Form.Input
           name="name"
           type="text"
@@ -73,8 +75,6 @@ const AddressForm = ({ setShowModal, address }) => {
           value={formik.values.name}
           error={formik.errors.name}
         />
-      </Form.Group>
-      <Form.Group widths="equal">
         <Form.Input
           name="dni"
           type="text"
@@ -83,6 +83,17 @@ const AddressForm = ({ setShowModal, address }) => {
           onChange={formik.handleChange}
           value={formik.values.dni}
           error={formik.errors.dni}
+        />
+      </Form.Group>
+      <Form.Group widths="equal">
+        <Form.Input
+          name="postalCode"
+          type="text"
+          label="Codigo postal"
+          placeholder="Codigo postal"
+          onChange={formik.handleChange}
+          value={formik.values.postalCode}
+          error={formik.errors.postalCode}
         />
         <Form.Input
           name="phone"
@@ -99,6 +110,11 @@ const AddressForm = ({ setShowModal, address }) => {
         setZone={setZone}
         setAddressNotAcepted={setAddressNotAcepted}
       />
+      {addressNotAcepted && (
+        <p className="addressNotValid">
+          En estos momentos solo realizamos envios a 10km de nuestro local.
+        </p>
+      )}
       <Form.Input
         name="details"
         type="text"

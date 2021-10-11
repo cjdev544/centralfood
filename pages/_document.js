@@ -1,5 +1,6 @@
 import Document, { Head, Html, Main, NextScript } from "next/document";
 
+console.log(process.env.API_KEY, "APIIII");
 class MyDocument extends Document {
   render() {
     return (
@@ -11,7 +12,7 @@ class MyDocument extends Document {
           <script
             async
             defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBERa0jlcgpGXzcp-b2w5FdrhwcjAUe-tM&libraries=places&callback=initMap"
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBERa0jlcgpGXzcp-b2w5FdrhwcjAUe-tM&libraries=places"
           ></script>
         </Head>
         <body>

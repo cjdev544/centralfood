@@ -3,6 +3,24 @@
   background-color: var(--color-background-dark);
 }
 
+.alert {
+  color: var(--color-font-light);
+  background-color: var(--color-primary);
+  text-align: center;
+}
+
+.sending {
+  color: var(--color-font-light);
+  background-color: var(--color-success);
+  text-align: center;
+}
+
+.send {
+  color: var(--color-font-light);
+  background-color: transparent;
+  text-align: center;
+}
+
 .header {
   color: var(--color-font-light);
   padding: 10px;

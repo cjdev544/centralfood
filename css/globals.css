@@ -234,6 +234,7 @@ img {
 */
 .form .actions {
   justify-content: space-between !important;
+  margin-bottom: 5px;
   margin-top: 20px;
 }
 .form .actions .ui.basic.button {
@@ -241,6 +242,16 @@ img {
 }
 .form .actions .ui.button.submit {
   margin-right: 10px !important;
+}
+
+.changePassword {
+  cursor: pointer;
+  display: inline;
+  font-size: 14px;
+}
+
+.changePassword:hover {
+  color: var(--color-primary);
 }
 
 /* 
@@ -263,6 +274,11 @@ img {
 }
 .change-form > form .submit {
   padding: 12px 60px;
+}
+
+.addressNotValid {
+  color: red;
+  margin-top: 0 !important;
 }
 
 /* 

@@ -23,10 +23,17 @@ const Order = ({ order }) => {
   } = order;
 
   const [showModal, setShowModal] = useState(false);
-
+  console.log(order);
   return (
     <>
       <div className={style.order}>
+        {!order?.deliveryIn && <div className={style.alert}>Por confirmar</div>}
+        {order?.deliveryIn && !order?.orderSend && (
+          <div className={style.sending}>
+            Entrega aproximada: {order.deliveryIn} min
+          </div>
+        )}
+        {order?.orderSend && <div className={style.send}>Enviado</div>}
         <div className={style.header}>
           <p>Pedido: {id}</p>
           <div className={style.flex}>

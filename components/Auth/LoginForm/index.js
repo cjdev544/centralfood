@@ -71,18 +71,18 @@ const LoginForm = ({ setShowLogin, setShowModal }) => {
         name="subscribe"
       />
       <div className="actions">
-        <Button type="button" basic onClick={() => setShowLogin(false)}>
-          Registrar usuario
-        </Button>
         <div>
           <Button type="submit" className="submit" loading={isLoading}>
             Iniciar sesión
           </Button>
-          <Button type="button" onClick={resetPassword}>
-            ¿Has olvidado la contraseña?
+          <Button type="button" basic onClick={() => setShowLogin(false)}>
+            Registrar usuario
           </Button>
         </div>
       </div>
+      <p className="changePassword" onClick={resetPassword}>
+        ¿Has olvidado la contraseña?
+      </p>
     </Form>
   );
 };
