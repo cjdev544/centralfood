@@ -24,7 +24,7 @@ export const useAuth = () => {
     dispatch(registerApi(formData, setShowModal, subscribe));
   };
 
-  const resetEmailApi = async (email) => {
+  const resetPasswordApi = async (email) => {
     try {
       const url = `${BASE_PATH}/auth/forgot-password`;
       const params = {
@@ -70,7 +70,7 @@ export const useAuth = () => {
     auth,
     loginUser,
     registerUser,
-    resetEmailApi,
+    resetPasswordApi,
     logoutAuth,
     updateUser,
     createAddress,

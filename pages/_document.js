@@ -1,6 +1,5 @@
 import Document, { Head, Html, Main, NextScript } from "next/document";
 
-console.log(process.env.API_KEY, "APIIII");
 class MyDocument extends Document {
   render() {
     return (

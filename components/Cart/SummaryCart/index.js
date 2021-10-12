@@ -5,11 +5,12 @@ import style from "./SummaryCart.module.css";
 
 const SummaryCart = ({ products, totalPriceToPay }) => {
   const { removeAllProductsCart } = useCart();
+
   return (
     <div className={style.summary}>
       <div className={style.title}>
         Productos
-        <div className={style.plus} onClick={() => removeAllProductsCart()}>
+        <div className={style.plus} onClick={removeAllProductsCart}>
           Vaciar carrito
         </div>
       </div>

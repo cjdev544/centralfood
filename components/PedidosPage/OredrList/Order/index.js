@@ -23,7 +23,7 @@ const Order = ({ order }) => {
   } = order;
 
   const [showModal, setShowModal] = useState(false);
-  console.log(order);
+
   return (
     <>
       <div className={style.order}>
@@ -78,22 +78,48 @@ const Order = ({ order }) => {
         setShowModal={setShowModal}
         title={`Pedido: ${id}`}
       >
-        <p>Dirección del pedido: {direccionEnvio.title}</p>
+        {direccionEnvio === "Recogida el en local" ? (
+          <p>
+            <span className={style.bold}>Pedido para recoger en el local</span>
+          </p>
+        ) : (
+          <p>
+            <span className={style.bold}>Dirección del pedido:</span>{" "}
+            {direccionEnvio?.details}, {direccionEnvio?.zone?.address}
+          </p>
+        )}
         <p>
-          Fecha de pedido: {moment(createdAt).format("L")} -{" "}
-          {moment(createdAt).format("LT")}
+          <span className={style.bold}>Fecha de pedido:</span>{" "}
+          {moment(createdAt).format("L")} - {moment(createdAt).format("LT")}
         </p>
         {cubiertosParaPersonas > 1 && (
-          <p>Cubiertos para {cubiertosParaPersonas} personas.</p>
+          <p>
+            <span className={style.bold}>Cubiertos para:</span>{" "}
+            {cubiertosParaPersonas} personas.
+          </p>
         )}
         {cubiertosParaPersonas === 1 && (
-          <p>Cubiertos para {cubiertosParaPersonas} persona.</p>
+          <p>
+            <span className={style.bold}>Cubiertos para:</span>{" "}
+            {cubiertosParaPersonas} persona.
+          </p>
         )}
-        <p>Fecha de entrega: {fechaEntrega}</p>
-        <p>Hora de entrega: {horaEntrega}</p>
-        <p>Total por productos: {totalProductos}€</p>
-        <p>Costo de envío: {costoEnvio}€</p>
-        <p>Total pagado: {totalCompra}€</p>
+        <p>
+          <span className={style.bold}>Fecha de entrega:</span> {fechaEntrega}
+        </p>
+        <p>
+          <span className={style.bold}>Hora de entrega:</span> {horaEntrega}
+        </p>
+        <p>
+          <span className={style.bold}>Total por productos:</span>{" "}
+          {totalProductos}€
+        </p>
+        <p>
+          <span className={style.bold}>Costo de envío:</span> {costoEnvio}€
+        </p>
+        <p>
+          <span className={style.bold}>Total pagado:</span> {totalCompra}€
+        </p>
       </BasicModal>
     </>
   );

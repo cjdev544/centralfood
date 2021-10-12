@@ -91,3 +91,8 @@
   padding: 10px;
   text-align: center;
 }
+
+.bold {
+  font-weight: bold;
+  margin-right: 10px;
+}

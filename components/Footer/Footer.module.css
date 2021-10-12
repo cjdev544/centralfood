@@ -33,3 +33,20 @@
 .copy span {
   color: var(--color-primary);
 }
+
+.local {
+  font-size: 12px;
+}
+
+.local a {
+  color: var(--color-primary);
+}
+
+.local a:hover {
+  color: var(--color-font-light);
+}
+
+.local span {
+  display: block;
+  margin-bottom: 20px;
+}

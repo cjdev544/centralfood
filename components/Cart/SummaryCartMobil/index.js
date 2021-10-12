@@ -1,12 +1,17 @@
+import { useCart } from "../../../hooks/useCart";
 import ProductCartMobile from "./ProductCartMobile";
-import style from './SummaryCartMobile.module.css'
+import style from "./SummaryCartMobile.module.css";
 
 const SummaryCartMobil = ({ products, totalPriceToPay }) => {
+  const { removeAllProductsCart } = useCart();
+
   return (
     <div className={style.cartMobile}>
       <div className={style.title}>
         Productos
-        <div className={style.plus}>Vaciar carrito</div>
+        <div className={style.plus} onClick={removeAllProductsCart}>
+          Vaciar carrito
+        </div>
       </div>
       <div className={style.data}>
         {products?.map((product) => (

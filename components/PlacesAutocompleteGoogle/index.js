@@ -28,7 +28,7 @@ const PlacesAutocompleteGoogle = ({
     clearSuggestions,
   } = usePlacesAutocomplete({
     requestOptions: {
-      componentRestrictions: { country: ["VE"] },
+      componentRestrictions: { country: ["ES"] },
       strictBounds: true,
       types: ["address"],
     },
@@ -38,7 +38,7 @@ const PlacesAutocompleteGoogle = ({
     clearSuggestions();
   });
 
-  const origin = { lat: 10.471599365443314, lng: -66.95680455688138 };
+  const origin = { lat: 36.721465873443314, lng: -4.438959173978912 };
 
   const handleInput = (e) => {
     setValue(e.target.value);

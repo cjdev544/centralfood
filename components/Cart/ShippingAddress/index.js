@@ -32,7 +32,7 @@ const ShippingAddress = ({
       setAddress(addresses[0]);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [addresses]);
 
   const openModal = () => {
     setFormModal(<AddressForm setShowModal={setShowModal} />);

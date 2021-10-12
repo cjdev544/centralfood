@@ -6,7 +6,7 @@ import { useUi } from "../../../hooks/useUi";
 import { useState } from "react";
 
 const LoginForm = ({ setShowLogin, setShowModal }) => {
-  const { loginUser, resetEmailApi } = useAuth();
+  const { loginUser, resetPasswordApi } = useAuth();
   const { isLoading, setIsLoading } = useUi();
   const [wantSubscribe, setWantSubscribe] = useState(false);
 
@@ -38,7 +38,8 @@ const LoginForm = ({ setShowLogin, setShowModal }) => {
     if (!validatorEmail.isValidSync(formik.values.identifier)) {
       formik.setErrors({ identifier: true });
     } else {
-      const res = await resetEmailApi(formik.values.identifier);
+      const res = await resetPasswordApi(formik.values.identifier);
+      console.log(res, "RESPUESTA");
     }
   };
 
