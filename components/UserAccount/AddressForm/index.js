@@ -8,7 +8,7 @@ import PlacesAutocompleteGoogle from "../../PlacesAutocompleteGoogle";
 
 const AddressForm = ({ setShowModal, address }) => {
   const [addressNotAcepted, setAddressNotAcepted] = useState(null);
-  const [zone, setZone] = useState(null);
+  const [zone, setZone] = useState(address ? address?.zone : null);
 
   const { isLoading, setIsLoading } = useUi();
   const { auth, createAddress, updateAddress } = useAuth();
@@ -17,7 +17,7 @@ const AddressForm = ({ setShowModal, address }) => {
     initialValues: {
       title: address?.title || "",
       name: address?.name || "",
-      // zone: address?.zona?.address[0] || "",
+      zone: address?.zone?.address || "",
       dni: address?.dni || "",
       postalCode: address?.postalCode || "",
       details: address?.details || "",
@@ -26,7 +26,7 @@ const AddressForm = ({ setShowModal, address }) => {
     validationSchema: Yup.object({
       title: Yup.string().required(true),
       name: Yup.string().required(true),
-      //zona: Yup.string().required(true),
+      zone: Yup.string().required(true),
       dni: Yup.string().required(true),
       postalCode: Yup.string().required(true),
       details: Yup.string().required(true),
