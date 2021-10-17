@@ -30,16 +30,17 @@ export const useAuth = () => {
       const params = {
         method: "POST",
         headers: {
+          Accept: "application/json",
           "Content-type": "application/json",
         },
         body: JSON.stringify({ email }),
       };
 
       const response = await fetch(url, params);
-      const result = await response.json();
-      return result;
+      // const result = await response.json();
+      console.log("Correo enviado");
     } catch (err) {
-      console.error(err);
+      console.error("A ocurrido un error", err.message);
       return null;
     }
   };

@@ -143,8 +143,10 @@ export const getApiAddress = (userId) => {
   return async (dispatch) => {
     try {
       const url = `${BASE_PATH}/addresses?user=${userId}`;
-      const addresses = await authFetch(url, null, () => null);
-      dispatch(getAddress(addresses));
+      if (userId) {
+        const addresses = await authFetch(url, null, () => null);
+        dispatch(getAddress(addresses));
+      }
     } catch (err) {
       console.log(err);
       return null;

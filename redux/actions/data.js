@@ -1,6 +1,7 @@
+import { doc, onSnapshot } from "firebase/firestore";
+import { db } from "../../firebase/config";
 import { concatArray } from "../../helpers/concatArray";
 import { BASE_PATH } from "../../helpers/constants";
-import { authFetch } from "../../helpers/fetch";
 import { types } from "../types";
 
 export const startGetPromotionPlates = () => {
@@ -161,4 +162,22 @@ export const startGetPriceDelivery6km = () => {
 const getPriceDelivery6km = (price) => ({
   type: types.getPriceDelivery6km,
   payload: price,
+});
+
+export const isOpenOrClose = () => {
+  return (dispatch) => {
+    try {
+      onSnapshot(doc(db, "openClose", "O91HkLkdfZw0JfiDHteA"), (doc) => {
+        dispatch(setIsOpenOrClose(doc.data().isOpen));
+      });
+    } catch (err) {
+      console.log(err);
+      return null;
+    }
+  };
+};
+
+const setIsOpenOrClose = (isOpen) => ({
+  type: types.isOpenLocal,
+  payload: isOpen,
 });

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  isOpenOrClose,
   startGetPopularPlates,
   startGetPriceDelivery6km,
   startGetPromotionPlates,
@@ -13,11 +14,22 @@ export const useData = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(startGetRestaurants());
+    dispatch(startGetPriceDelivery6km());
+    dispatch(isOpenOrClose());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
     if (!data?.popularPlates) {
-      dispatch(startGetRestaurants());
-      dispatch(startGetPromotionPlates());
       dispatch(startGetPopularPlates());
-      dispatch(startGetPriceDelivery6km());
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (!data?.promotionPlates) {
+      dispatch(startGetPromotionPlates());
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

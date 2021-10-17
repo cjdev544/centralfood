@@ -38,8 +38,7 @@ const LoginForm = ({ setShowLogin, setShowModal }) => {
     if (!validatorEmail.isValidSync(formik.values.identifier)) {
       formik.setErrors({ identifier: true });
     } else {
-      const res = await resetPasswordApi(formik.values.identifier);
-      console.log(res, "RESPUESTA");
+      await resetPasswordApi(formik.values.identifier);
     }
   };
 

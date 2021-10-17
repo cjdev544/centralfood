@@ -79,7 +79,7 @@ const AddressForm = ({ setShowModal, address }) => {
           name="dni"
           type="text"
           label="DNI/RIF"
-          placeholder="DNI/RIF"
+          placeholder="DNI/TIE"
           onChange={formik.handleChange}
           value={formik.values.dni}
           error={formik.errors.dni}

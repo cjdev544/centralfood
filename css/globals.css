@@ -532,3 +532,12 @@ img {
 .basic-modal .header i:hover {
   cursor: pointer;
 }
+
+/*
+ *  Alert is close for new orders
+ */
+.is-close {
+  text-align: center;
+  color: var(--color-font-light);
+  background-color: red;
+}

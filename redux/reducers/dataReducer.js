@@ -7,6 +7,7 @@ const initialState = {
   plates: [],
   allPlates: null,
   deliveryPrice6km: null,
+  isOpen: null,
 };
 
 export const dataReducer = (state = initialState, action) => {
@@ -50,6 +51,12 @@ export const dataReducer = (state = initialState, action) => {
       return {
         ...state,
         deliveryPrice6km: action.payload,
+      };
+
+    case types.isOpenLocal:
+      return {
+        ...state,
+        isOpen: action.payload,
       };
 
     default:

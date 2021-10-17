@@ -26,6 +26,8 @@ const FormPayment = ({ products, address, values, totalPriceToPay }) => {
   const { reloadOrder, deleteOrder, addOrderInFirebase, getOrder } = useOrder();
   const { removeAllProductsCart } = useCart();
 
+  const isOpen = data?.isOpen;
+
   useEffect(() => {
     if (values?.shipping === "Entrega a domicilio") {
       setPriceShipping(data?.deliveryPrice6km);
@@ -132,6 +134,14 @@ const FormPayment = ({ products, address, values, totalPriceToPay }) => {
 
   return (
     <form className="form-payment" id="payment-form" onSubmit={handleSubmit}>
+      {!isOpen && isOpen !== null && (
+        <div className="is-close">
+          <p>
+            En estos momentos nos encontramos cerrados para realizar nuevos
+            pedidos
+          </p>
+        </div>
+      )}
       <p>
         <span className="payment-span">
           Total productos: {totalPriceToPay}€
@@ -144,11 +154,17 @@ const FormPayment = ({ products, address, values, totalPriceToPay }) => {
         options={cardStyle}
         onChange={handleChange}
       />
-      <button disabled={processing || disabled || succeeded} id="submit">
-        <span id="button-text">
-          {processing ? <div className="spinner" id="spinner"></div> : "Pagar"}
-        </span>
-      </button>
+      {isOpen && (
+        <button disabled={processing || disabled || succeeded} id="submit">
+          <span id="button-text">
+            {processing ? (
+              <div className="spinner" id="spinner"></div>
+            ) : (
+              "Pagar"
+            )}
+          </span>
+        </button>
+      )}
       {/* Show any error that happens when processing the payment */}
       {error && (
         <div className="card-error" role="alert">
