@@ -151,7 +151,7 @@ export const startGetPriceDelivery6km = () => {
       const url = `${BASE_PATH}/costo-envios`;
       const response = await fetch(url);
       const result = await response.json();
-      dispatch(getPriceDelivery6km(result[0].delivery6km));
+      dispatch(getPriceDelivery(result));
     } catch (err) {
       console.log(err);
       return null;
@@ -159,9 +159,9 @@ export const startGetPriceDelivery6km = () => {
   };
 };
 
-const getPriceDelivery6km = (price) => ({
+const getPriceDelivery = (prices) => ({
   type: types.getPriceDelivery6km,
-  payload: price,
+  payload: prices,
 });
 
 export const isOpenOrClose = () => {

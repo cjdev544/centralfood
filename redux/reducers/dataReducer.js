@@ -6,7 +6,7 @@ const initialState = {
   restaurants: [],
   plates: [],
   allPlates: null,
-  deliveryPrice6km: null,
+  deliveryPrice: null,
   isOpen: null,
 };
 
@@ -50,7 +50,7 @@ export const dataReducer = (state = initialState, action) => {
     case types.getPriceDelivery6km:
       return {
         ...state,
-        deliveryPrice6km: action.payload,
+        deliveryPrice: action.payload,
       };
 
     case types.isOpenLocal:

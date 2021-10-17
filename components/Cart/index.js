@@ -107,6 +107,7 @@ const Cart = () => {
                 <Payment
                   products={productsCart}
                   address={address}
+                  addressActive={addressActive}
                   values={values}
                   totalPriceToPay={totalPriceToPay}
                 />

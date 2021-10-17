@@ -9,6 +9,7 @@ import { useOrder } from "../../../../hooks/useOrder";
 import { useCart } from "../../../../hooks/useCart";
 import { useData } from "../../../../hooks/useData";
 import { round } from "mathjs";
+import { calculateDeliveryCost } from "../../../../helpers/calculateDeliveryCost";
 
 const FormPayment = ({ products, address, values, totalPriceToPay }) => {
   const [succeeded, setSucceeded] = useState(false);
@@ -30,12 +31,13 @@ const FormPayment = ({ products, address, values, totalPriceToPay }) => {
 
   useEffect(() => {
     if (values?.shipping === "Entrega a domicilio") {
-      setPriceShipping(data?.deliveryPrice6km);
+      const cost = calculateDeliveryCost(data?.deliveryPrice, address);
+      setPriceShipping(cost);
     } else {
       setPriceShipping(0);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [values?.shipping]);
+  }, [values?.shipping, address]);
 
   const cardStyle = {
     style: {
@@ -146,7 +148,9 @@ const FormPayment = ({ products, address, values, totalPriceToPay }) => {
         <span className="payment-span">
           Total productos: {totalPriceToPay}€
         </span>
-        <span className="payment-span">Costo de envío: {priceShipping}€</span>
+        {values?.shipping === "Entrega a domicilio" && (
+          <span className="payment-span">Costo de envío: {priceShipping}€</span>
+        )}
       </p>
       <h3>Total a pagar: {round(totalPriceToPay + priceShipping, 2)}€</h3>
       <CardElement

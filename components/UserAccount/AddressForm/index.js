@@ -26,7 +26,7 @@ const AddressForm = ({ setShowModal, address }) => {
     validationSchema: Yup.object({
       title: Yup.string().required(true),
       name: Yup.string().required(true),
-      zone: Yup.string().required(true),
+      // zone: Yup.string().required(true),
       dni: Yup.string().required(true),
       postalCode: Yup.string().required(true),
       details: Yup.string().required(true),
@@ -34,6 +34,7 @@ const AddressForm = ({ setShowModal, address }) => {
     }),
 
     onSubmit: (formData) => {
+      console.log("CLICK");
       formData.zone = zone;
 
       if (!address) {
