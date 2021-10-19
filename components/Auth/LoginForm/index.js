@@ -6,7 +6,7 @@ import { useUi } from "../../../hooks/useUi";
 import { useState } from "react";
 
 const LoginForm = ({ setShowLogin, setShowModal }) => {
-  const { loginUser, resetPasswordApi } = useAuth();
+  const { loginUser } = useAuth();
   const { isLoading, setIsLoading } = useUi();
   const [wantSubscribe, setWantSubscribe] = useState(false);
 
@@ -31,16 +31,16 @@ const LoginForm = ({ setShowLogin, setShowModal }) => {
     },
   });
 
-  const resetPassword = async () => {
-    formik.setErrors({});
-    const validatorEmail = Yup.string().email().required();
+  // const resetPassword = async () => {
+  //   formik.setErrors({});
+  //   const validatorEmail = Yup.string().email().required();
 
-    if (!validatorEmail.isValidSync(formik.values.identifier)) {
-      formik.setErrors({ identifier: true });
-    } else {
-      await resetPasswordApi(formik.values.identifier);
-    }
-  };
+  //   if (!validatorEmail.isValidSync(formik.values.identifier)) {
+  //     formik.setErrors({ identifier: true });
+  //   } else {
+  //     await resetPasswordApi(formik.values.identifier);
+  //   }
+  // };
 
   const handleRadio = (e, { checked }) => {
     setWantSubscribe(checked);
@@ -66,7 +66,7 @@ const LoginForm = ({ setShowLogin, setShowModal }) => {
       />
       <Radio
         toggle
-        label="Qiero recibir ofertas y promociones"
+        label="Quiero recibir ofertas y promociones"
         onChange={handleRadio}
         name="subscribe"
       />
@@ -80,9 +80,9 @@ const LoginForm = ({ setShowLogin, setShowModal }) => {
           </Button>
         </div>
       </div>
-      <p className="changePassword" onClick={resetPassword}>
+      {/* <p className="changePassword" onClick={resetPassword}>
         ¿Has olvidado la contraseña?
-      </p>
+      </p> */}
     </Form>
   );
 };
